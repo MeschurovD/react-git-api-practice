@@ -1,0 +1,27 @@
+{
+  "name": "react-git-api-practice",
+  "version": "1.0.0",
+  "description": "React App for working with Git api",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MeschurovD/react-git-api-practice.git"
+  },
+  "keywords": [
+    "js",
+    "javascript",
+    "React",
+    "Redux",
+    "Git",
+    "api"
+  ],
+  "author": "Meschurov Denis <meschurovd@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MeschurovD/react-git-api-practice/issues"
+  },
+  "homepage": "https://github.com/MeschurovD/react-git-api-practice#readme"
+}
