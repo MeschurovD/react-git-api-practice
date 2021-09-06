@@ -4,10 +4,22 @@ const HTMLPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 module.exports = {
-  entry: path.resolve(__dirname, 'src/index.js'),
+  entry: [ 
+    '@babel/polyfill',
+    path.resolve(__dirname, 'src/index.jsx')
+  ],
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].[hash].js'
+  },
+  resolve: {
+    extensions: ['.js', '.jsx'],
+    alias: {
+      '@': path.resolve(__dirname, 'src'),
+    }
+  },
+  devServer: {
+    port: 3000,
   },
   module: {
     rules: [{
@@ -17,7 +29,28 @@ module.exports = {
         'css-loader',
         'sass-loader'
       ]
-    }]
+    },
+    {
+      test: /\.js$/,
+      exclude: /node_module/,
+      use: {
+        loader: 'babel-loader',
+        options: {
+          presets: ['@babel/preset-env']
+        }
+      }
+    },
+    {
+      test: /\.jsx$/,
+      exclude: /node_modules/,
+      use: {
+          loader:"babel-loader",
+          options: {
+              presets:["@babel/preset-react", "@babel/preset-env"]
+          }
+      }
+  }
+  ]
   },
   plugins: [
     new miniCss({
