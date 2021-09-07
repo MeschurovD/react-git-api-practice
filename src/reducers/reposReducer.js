@@ -11,7 +11,8 @@ export default function reposReducer(state = defaultState, action) {
     case SET_REPOS: {
       return {
         ...state,
-        items: [...action.payload.items]
+        items: [...action.payload.items],
+        isFetching: false
       }
     }
     case SET_FETCHING: {
