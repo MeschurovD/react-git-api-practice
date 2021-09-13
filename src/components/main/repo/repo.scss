@@ -6,10 +6,40 @@
   flex-direction: column;
   background-color: rgb(255, 255, 255);
 
-  &__body-url {
-    display: inline-block;
-    padding: 10px;
-    background-color: rgb(175, 175, 175);
-    border-radius: 2rem;
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+
+    &-title {
+      font-size: 30px;
+    }
+
+    &-stars {
+      display: flex;
+
+      i {
+        margin-right: 5px;
+      }
+    }
   }
+  &__body {
+    
+
+    &-update {
+      margin-bottom: 10px;
+    }
+    &-url {
+      display: inline-block;
+      padding: 10px;
+      background-color: rgb(175, 175, 175);
+      border-radius: 2rem;
+      font-size: 16px;
+      &:hover {
+        background-color: rgb(99, 99, 214);
+        
+      }
+    }
+  }
+  
 }
