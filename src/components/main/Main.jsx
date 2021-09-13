@@ -30,7 +30,6 @@ const Main = () => {
   const searchRepo = () => {
     dispatch(setCurrentPage(1))
     getRepos(searchValue, currentPage, perPage)(dispatch)
-    setSearchValue('')
   }
 
   /**

@@ -1,6 +1,8 @@
 import React from 'react';
 import usePages from '../../hooks/usePages';
 
+import './pagination.scss'
+
 
 const Pagination = ({currentPage, totalCount, perPage, changeCurrentPage}) => {
   
