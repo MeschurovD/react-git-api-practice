@@ -4,7 +4,7 @@ const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
 
 const defaultState = {
   repos: [{}],
-  isFetching: false,
+  isFetching: true,
   currentPage: 1,
   totalCount: 0
 }

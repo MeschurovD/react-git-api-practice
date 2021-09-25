@@ -10,7 +10,8 @@ module.exports = {
   ],
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].[hash].js'
+    filename: '[name].[hash].js',
+    publicPath: '/'
   },
   resolve: {
     extensions: ['.js', '.jsx'],
@@ -20,6 +21,7 @@ module.exports = {
   },
   devServer: {
     port: 3000,
+    historyApiFallback: true
   },
   module: {
     rules: [{

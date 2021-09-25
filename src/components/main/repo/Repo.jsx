@@ -1,13 +1,15 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import './repo.scss'
 
 const Repo = (props) => {
   const repo = props.repo
-
+ 
+  
   return (
     <div className='repo'>
       <div className="repo__header">
-        <div className="repo__header-title">{repo.name}</div>
+        <div className="repo__header-title"><NavLink to={`/card/${repo.owner.login}/${repo.name}`} >{repo.name}</NavLink></div>
         <div className="repo__header-stars">
           <i className='bx bxs-star'></i>
           <div className="repo__header-star-count">{repo.stargazers_count}</div>

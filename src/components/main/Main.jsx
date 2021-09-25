@@ -9,7 +9,8 @@ import Pagination from '../Pagination';
 
 const Main = () => {
   const dispatch = useDispatch()
-  const { repos, isFetching, currentPage, totalCount } = useSelector(state => state.repos)
+  const { repos } = useSelector(state => state.repos)
+  const { isFetching, currentPage, totalCount } = useSelector(state => state.repos)
   const [searchValue, setSearchValue] = useState('')
   const perPage = 10
 
@@ -17,6 +18,7 @@ const Main = () => {
   useEffect(() => {
     getRepos(searchValue, currentPage, perPage)(dispatch)
   }, [currentPage])
+
   /**
    * Изменение значения input - поисковой строки
    */
@@ -52,6 +54,7 @@ const Main = () => {
           <div className='fetching'></div>
           :
           repos.map(repo => {
+            console.log(repo)
             return <Repo repo={repo} key={repo.id + repo.node_id} />
           })
       }
