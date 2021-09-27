@@ -3,8 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-//@ts-ignore
-import { setCurrentPage } from '../../reducers/reposReducer.ts';
+import { setCurrentPage } from '../../reducers/reposReducer';
 import { getRepos } from '../../components/actions/repos';
 import './main.scss'
 import Repo from './repo/Repo';
