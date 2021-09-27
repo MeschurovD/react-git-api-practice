@@ -38,3 +38,5 @@ export default function reposReducer(state = defaultState, action) {
 export const setRepos = (repos) => ({type: SET_REPOS, payload: repos})
 export const setFetching = (bool) => ({type: SET_FETCHING, payload: bool})
 export const setCurrentPage = (index) => ({type: SET_CURRENT_PAGE, payload: index})
+
+
