@@ -1,28 +1,46 @@
+
+//<--------------------IMPORT-------------------------->
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
+//@ts-ignore
 import { setCurrentPage } from '../../reducers/reposReducer.ts';
 import { getRepos } from '../../components/actions/repos';
 import './main.scss'
 import Repo from './repo/Repo';
 import Pagination from '../../components/Pagination';
+import { useTypeSelector } from '../../hooks/useTypeSelector';
 
-const Main = () => {
+
+//<--------------------COMPONENT----------------------->
+/**
+ * Основная страница со списком репозиториев
+ */
+const Main: React.FC = () => {
+
+
+//<--------------------SUBSIDIARY---------------------->
   const dispatch = useDispatch()
-  const { repos } = useSelector(state => state.repos)
-  const { isFetching, currentPage, totalCount } = useSelector(state => state.repos)
+
+
+//<--------------------DATA AND STATES----------------->
+  const { repos } = useTypeSelector(state => state.repos)
+  const { isFetching, currentPage, totalCount } = useTypeSelector(state => state.repos)
   const [searchValue, setSearchValue] = useState('')
-  const perPage = 10
+  const perPage: number = 10
 
 
+//<--------------------USE EFFECT---------------------->
   useEffect(() => {
     getRepos(searchValue, currentPage, perPage)(dispatch)
   }, [currentPage])
 
+
+//<--------------------SUBSIDIARY FUNCTION------------->
   /**
    * Изменение значения input - поисковой строки
    */
-  const changeInputValue = e => {
+  const changeInputValue = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value)
   }
 
@@ -38,10 +56,12 @@ const Main = () => {
    * Изменение страницы с репозиториями
    * @param {*} page - номер страницы
    */
-  const changeCurrentPage = page => {
+  const changeCurrentPage = (page: number) => {
     dispatch(setCurrentPage(page))
   }
 
+
+//<--------------------JSX COMPONENT------------------->
   return (
     <div>
       <div className='search'>
