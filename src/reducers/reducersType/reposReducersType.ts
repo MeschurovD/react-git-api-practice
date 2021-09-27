@@ -4,7 +4,8 @@ export enum reposReducersActions {
   SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
 }
 
-interface ReposReducerDefaultStateType {
+
+export interface ReposReducerStateType {
   repos: [{}],
   isFetching: boolean
   currentPage: number

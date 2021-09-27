@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router';
-import { getCurrentRepo } from '../actions/repos';
+import { getCurrentRepo } from '../../components/actions/repos';
 
 const CardRepo = (props) => {
   const dispatch = useDispatch()

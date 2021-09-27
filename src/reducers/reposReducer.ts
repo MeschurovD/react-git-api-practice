@@ -1,8 +1,10 @@
+import { ReposReducerStateType } from "./reducersType/reposReducersType"
+
 const SET_REPOS = 'SET_REPOS'
 const SET_FETCHING = 'SET_FETCHING'
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
 
-const defaultState = {
+const defaultState: ReposReducerStateType = {
   repos: [{}],
   isFetching: true,
   currentPage: 1,

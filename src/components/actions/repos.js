@@ -1,5 +1,5 @@
 import axios from "axios"
-import { setFetching, setRepos } from "../../reducers/reposReducer"
+import { setFetching, setRepos } from "../../reducers/reposReducer.ts"
 
 /**
  * Запрос списка репозиториев на api github
