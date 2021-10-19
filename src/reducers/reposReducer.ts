@@ -1,8 +1,10 @@
+import { ReposReducerStateType } from "./reducersType/reposReducersType"
+
 const SET_REPOS = 'SET_REPOS'
 const SET_FETCHING = 'SET_FETCHING'
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
 
-const defaultState = {
+const defaultState: ReposReducerStateType = {
   repos: [{}],
   isFetching: true,
   currentPage: 1,
@@ -38,3 +40,5 @@ export default function reposReducer(state = defaultState, action) {
 export const setRepos = (repos) => ({type: SET_REPOS, payload: repos})
 export const setFetching = (bool) => ({type: SET_FETCHING, payload: bool})
 export const setCurrentPage = (index) => ({type: SET_CURRENT_PAGE, payload: index})
+
+

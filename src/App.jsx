@@ -2,8 +2,8 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
-import Main from './main/Main';
-import CardRepo from './cardRepo/CardRepo';
+import Main from './features/main/Main';
+import CardRepo from './features/cardRepo/CardRepo';
 
 import './app.scss'
 

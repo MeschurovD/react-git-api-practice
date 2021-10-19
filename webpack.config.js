@@ -4,7 +4,7 @@ const HTMLPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 module.exports = {
-  entry: [ 
+  entry: [
     '@babel/polyfill',
     path.resolve(__dirname, 'src/index.jsx')
   ],
@@ -14,7 +14,7 @@ module.exports = {
     publicPath: '/'
   },
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js', '.jsx', 'ts', 'tsx'],
     alias: {
       '@': path.resolve(__dirname, 'src'),
     }
@@ -46,13 +46,27 @@ module.exports = {
       test: /\.jsx$/,
       exclude: /node_modules/,
       use: {
-          loader:"babel-loader",
-          options: {
-              presets:["@babel/preset-react", "@babel/preset-env"]
-          }
+        loader: "babel-loader",
+        options: {
+          presets: ["@babel/preset-react", "@babel/preset-env"]
+        }
       }
-  }
-  ]
+    },
+    {
+      test: /\.ts$/,
+      exclude: /node_modules/,
+      use: {
+        loader: 'ts-loader'
+      }
+    },
+    {
+      test: /\.tsx$/,
+      exclude: /node_modules/,
+      use: {
+        loader: 'ts-loader'
+      }
+    }
+    ]
   },
   plugins: [
     new miniCss({
