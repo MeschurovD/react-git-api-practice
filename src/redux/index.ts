@@ -1,7 +1,6 @@
 import { combineReducers } from "redux"
 import { createStore, applyMiddleware } from "redux"
-// @ts-ignore
-import reposReducer from '../reducers/reposReducer.ts'
+import reposReducer from '../reducers/reposReducer'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import thunk from "redux-thunk"
 
@@ -10,4 +9,6 @@ const rootReducer = combineReducers({
 })
 
 export const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))
+
+export type RootReducer = ReturnType<typeof rootReducer>
 

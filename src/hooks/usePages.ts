@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react"
 
-const usePages = (currentPage, totalCount, perPage) => {
-  const [pages, setPages] = useState([])
+/**
+ * Получение массива чисел - страниц
+ */
+const usePages = (currentPage: number, totalCount: number, perPage: number): number[] => {
+  const [pages, setPages] = useState<number[]> ([])
   const totalPages = Math.ceil(totalCount / perPage)
   const maxPages = 10
 

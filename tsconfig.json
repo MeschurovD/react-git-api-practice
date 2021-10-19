@@ -1,17 +1,12 @@
 {
-  "compileOnSave": false,
   "compilerOptions": {
-    "declaration": false,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "outDir": "../dist/out-tsc-e2e",
-    "sourceMap": true,
+    "outDir": "./dist/",
+    "noImplicitAny": true,
+    "module": "es6",
     "target": "es5",
     "jsx": "react",
-    "typeRoots": [
-      "../node_modules/@types"
-    ]
+    "allowJs": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
   }
 }

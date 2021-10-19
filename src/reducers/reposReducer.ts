@@ -1,4 +1,4 @@
-import { ReposReducerStateType } from "./reducersType/reposReducersType"
+import { Repos, ReposReducerStateType } from "./reducersType/reposReducersType"
 
 const SET_REPOS = 'SET_REPOS'
 const SET_FETCHING = 'SET_FETCHING'
@@ -11,7 +11,7 @@ const defaultState: ReposReducerStateType = {
   totalCount: 0
 }
 
-export default function reposReducer(state = defaultState, action) {
+export default function reposReducer(state = defaultState, action: any) {
   switch (action.type) {
     case SET_REPOS: {
       return {
@@ -37,8 +37,8 @@ export default function reposReducer(state = defaultState, action) {
   }
 }
 
-export const setRepos = (repos) => ({type: SET_REPOS, payload: repos})
-export const setFetching = (bool) => ({type: SET_FETCHING, payload: bool})
-export const setCurrentPage = (index) => ({type: SET_CURRENT_PAGE, payload: index})
+export const setRepos = (repos: Repos) => ({type: SET_REPOS, payload: repos})
+export const setFetching = (bool: boolean) => ({type: SET_FETCHING, payload: bool})
+export const setCurrentPage = (index: number) => ({type: SET_CURRENT_PAGE, payload: index})
 
 

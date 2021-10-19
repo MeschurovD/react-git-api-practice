@@ -6,7 +6,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 module.exports = {
   entry: [
     '@babel/polyfill',
-    path.resolve(__dirname, 'src/index.jsx')
+    path.resolve(__dirname, 'src/index.tsx')
   ],
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -14,7 +14,7 @@ module.exports = {
     publicPath: '/'
   },
   resolve: {
-    extensions: ['.js', '.jsx', 'ts', 'tsx'],
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
     alias: {
       '@': path.resolve(__dirname, 'src'),
     }
