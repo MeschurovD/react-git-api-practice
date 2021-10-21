@@ -29,7 +29,7 @@ module.exports = {
       use: [
         miniCss.loader,
         'css-loader',
-        'sass-loader'
+        'sass-loader',
       ]
     },
     {

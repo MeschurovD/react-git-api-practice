@@ -1,0 +1,55 @@
+//@use '../../../../style/base.scss' as *;
+@use '../../../../style/components/variables' as *;
+@use '../../../../style/components/utils' as *;
+@use '../../../../style/components/animation' as *;
+
+//Верхняя панель
+.register-header {
+  @include absolute($l: 0, $r: 0);
+  margin: -1.6rem auto;
+  border-radius: 4rem;
+  padding: .8rem 2.4rem;
+  background-color: rgba($color-white, .8);
+  backdrop-filter: saturate(200%) blur(30px);
+
+  @include shadow-box;
+
+  z-index: 10;
+  
+  //
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 3.5rem;
+  }
+
+  //Активная кнопка
+  &__sing-active {
+    padding: .8rem 3.2rem;
+    border-radius: 4rem;
+    border: none;
+    transition: all .4s;
+    z-index: 20;
+
+    @include font(1.4rem, 700, $font-color-white);
+   //@include btn-anim;
+  }
+
+  //Не активная кнопка
+  .disable {
+    opacity: 0;
+    cursor: default;
+  }
+
+  //Логотип
+  &__logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+  }
+
+  
+}
