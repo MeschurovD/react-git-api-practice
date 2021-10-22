@@ -125,3 +125,19 @@
     transform: translateX(0);
   }
 }
+
+//Анимация input в RegisterPanel - при невалидной строке
+@keyframes inputColorAnim {
+  0% {
+    background-color: none;
+  }
+  
+  20% {
+    background-color: red;
+
+  }
+
+  100% {
+    background-color: none;
+  }
+}

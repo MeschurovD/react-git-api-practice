@@ -9,6 +9,8 @@ import './main.scss'
 import Repo from './repo/Repo';
 import Pagination from '../../components/Pagination';
 import { useTypeSelector } from '../../hooks/useTypeSelector';
+//@ts-ignore
+import { Redirect } from 'react-router-dom';
 
 
 //<--------------------COMPONENT----------------------->
@@ -27,6 +29,7 @@ const Main: React.FC = () => {
   const { isFetching, currentPage, totalCount } = useTypeSelector(state => state.repos)
   const [searchValue, setSearchValue] = useState('')
   const perPage: number = 10
+
 
 
 //<--------------------USE EFFECT---------------------->
@@ -85,6 +88,7 @@ const Main: React.FC = () => {
       />
     </div>
   );
+  
 };
 
 export default Main;
