@@ -11,15 +11,15 @@ import './registration.scss'
 const Registration: React.FC = () => {
 
   const [reg, setReg] = useState(true)
-  const [check, setCheck] = useState(false)
+  const [checkFirstDownload, setCheckFirstDownload] = useState(false)
   
-  const imgPanel1 = check 
+  const imgPanel1 = checkFirstDownload 
     ? reg ? 'img-panel-fon-1 to-right-open' : 'img-panel-fon-1 to-right-close'
     : 'img-panel-fon-1'
-  const imgPanel2 = check
+  const imgPanel2 = checkFirstDownload
     ? reg ? 'img-panel-fon-2 to-left-close' : 'img-panel-fon-2 to-left-open'
     : 'img-panel-fon-2'
-  const row = check 
+  const row = checkFirstDownload 
     ? reg ? 'row row-anim' : 'row-rev row-rev-anim'
     : 'row'
 
@@ -30,9 +30,9 @@ const Registration: React.FC = () => {
     <div className='register'>
       <div className="container">
         <div className="wrapper">
-          <RegisterHeader reg={reg} setReg={setReg} setCheck={setCheck} />
+          <RegisterHeader reg={reg} setReg={setReg} setCheckFirstDownload={setCheckFirstDownload} />
           <div className={row}>
-            <RegisterPanel reg={reg} />
+            <RegisterPanel reg={reg} checkFirstDownload={checkFirstDownload} />
             <div className='col'></div>
           </div>
         </div>

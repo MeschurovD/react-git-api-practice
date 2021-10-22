@@ -49,3 +49,13 @@
     border: 1px solid $gradient-1-finish;
   }
 }
+
+.btn-sign-down-anim {
+  animation: btnSignDown;
+  animation-duration: 1s;
+}
+
+.btn-sign-up-anim {
+  animation: btnSignUp;
+  animation-duration: 1s;
+}
