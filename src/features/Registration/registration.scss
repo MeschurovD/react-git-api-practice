@@ -1,0 +1,94 @@
+//@use '../../style/base.scss' as *;
+.register {
+  transition: all 1s;
+}
+
+.wrapper {
+  //При входе
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    transition: all 1s;
+
+    &-anim {
+      animation: registrAnimationToRight;
+      animation-duration: 1s;
+    }
+  }
+  //При регистрации
+  .row-rev {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
+
+    &-anim {
+      animation: registrAnimationToLeft;
+      animation-duration: 1s;
+    }
+  }
+
+  .col {
+    flex: 1 1 50%;
+    height: 65vh;
+    z-index: 1;
+  }
+}
+
+//Картинка
+.img-panel {
+  position: absolute;
+  top: -2rem;
+  right: 0;
+  width: 100%;
+  min-height: 75%;
+
+  %fon {
+    border-radius: 2rem;
+    position: absolute;
+    background-size: cover;
+    height: 100%;
+    min-height: 75vh;
+    top: 0;
+    width: 60%;
+    z-index: -1;
+    transform: skewX(-10deg);
+  }
+
+  &-fon-1 {
+    @extend %fon;
+    right: 0;
+    margin-right: -30rem;
+    background-image: url("../../../img/fon-1-min.png");
+  }
+
+  &-fon-2 {
+    @extend %fon;
+    left: -100%;
+    background-image: url("../../../img/fon-2.jpg");
+  }
+}
+
+
+
+
+.to-right-close {
+  animation: toRightClose;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+.to-right-open {
+  animation: toRightOpen;
+  animation-duration: 1s;
+}
+
+.to-left-open {
+  animation: toLeftOpen;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+.to-left-close {
+  animation: toLeftClose;
+  animation-duration: 1s;
+}

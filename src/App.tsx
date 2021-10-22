@@ -6,7 +6,8 @@ import { useDispatch } from 'react-redux';
 // @ts-ignore
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import Main from './features/main/Main';
-import CardRepo from './features/cardRepo/CardRepo';
+import CardRepo from './features/CardRepo';
+import Registration from './features/Registration';
 
 import './app.scss'
 
@@ -14,17 +15,24 @@ import './app.scss'
 //<--------------------COMPONENT----------------------->
 const App: React.FC = () => {
 
-
+  var docWidth = document.documentElement.offsetWidth;
+[].forEach.call(
+  document.querySelectorAll('*'),
+  function(el: any) {
+    if (el.offsetWidth > docWidth) {
+      console.log(el);
+    }
+  }
+);
 //<--------------------JSX COMPONENT------------------->
   return (
     <BrowserRouter>
-      <div className="container">
         <Switch>
           <Route exact path='/' component={Main} />
+          <Route path='/register' component={Registration} />
           <Route path='/card/:username/:reponame' component={CardRepo} />
           <Redirect to="/" />
         </Switch>
-      </div>
     </BrowserRouter>
   );
 };
