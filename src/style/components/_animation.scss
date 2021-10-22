@@ -1,8 +1,10 @@
 @use 'variables' as *;
 
+//Поднятие кнопки при наведении
 @mixin btn-anim {
   &:hover {
     transform: scale(1.05);
+    box-shadow: 0 .5rem 2rem rgba($color-dark, .2);
   }
 }
 
@@ -18,7 +20,8 @@
   }
 }
 
-.btn-anim-sign {
+//Болванка под анимацию кнопок - Sing in и Sing up
+%btn-anim {
   position: relative;
   &:hover {
     transform: translateY(-0.3rem);
@@ -37,7 +40,6 @@
 
   &::after {
     content: "";
-    background-image: linear-gradient(310deg, $gradient-2-start, $gradient-2-finish);
     display: inline-block;
     width: 100%;
     height: 100%;
@@ -48,8 +50,22 @@
     z-index: -1;
     transition: all 0.4s;
   }
+}
 
- 
+//Анимация кнопки Sing in
+.btn-anim-sign {
+  @extend %btn-anim;
+  &::after {
+    background-image: linear-gradient(310deg, $gradient-2-start, $gradient-2-finish);
+  }
+}
+
+//Анимация кнопки Sing up
+.btn-anim-reg {
+  @extend %btn-anim;
+  &::after {
+    background-image: linear-gradient(310deg, $gradient-1-start, $gradient-1-finish);
+  }
 }
 
 @keyframes toRightOpen {
@@ -60,5 +76,60 @@
   100% {
     transform: translateX(0) skewX(-10deg);
     opacity: 1;
+  }
+}
+
+@keyframes toRightClose {
+  0% {
+    transform: translateX(0) skewX(-10deg);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes toLeftOpen {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(150%) skewX(-10deg);
+    opacity: 1;
+  }
+}
+
+@keyframes toLeftClose {
+  0% {
+    transform: translateX(150%) skewX(-10deg);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+}
+
+//Анимация перехода панели Логина к панели Регистрации
+@keyframes registrAnimationToLeft {
+  0% {
+    transform: translateX(-60rem);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+//Анимация перехода панели Регистрации к панели Логина
+@keyframes registrAnimationToRight {
+  0% {
+    transform: translateX(60rem);
+  }
+  100% {
+    transform: translateX(0);
   }
 }

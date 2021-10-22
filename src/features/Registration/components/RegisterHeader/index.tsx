@@ -7,6 +7,7 @@ import './register-header.scss'
 interface PropsType {
   reg: boolean
   setReg: (reg: boolean) => void
+  setCheck: Function
 }
 //<--------------------COMPONENT----------------------->
 const RegisterHeader: React.FC<PropsType> = (props) => {
@@ -16,6 +17,7 @@ const RegisterHeader: React.FC<PropsType> = (props) => {
   const [signOn, setSignUp] = useState('register-header__sing-active btn-color-1')
 
   const onClickSignUp = () => {
+    props.setCheck(true)
     console.log('click')
     setReg(false)
     setSignIn('register-header__sing-active btn-color-2')

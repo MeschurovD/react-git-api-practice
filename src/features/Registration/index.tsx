@@ -8,33 +8,39 @@ import './registration.scss'
 
 
 //<--------------------COMPONENT----------------------->
-const Registration = () => {
+const Registration: React.FC = () => {
 
   const [reg, setReg] = useState(true)
-  console.log(reg);
+  const [check, setCheck] = useState(false)
   
-  let imgStyle = reg ? 'img-panel to-right-open' : 'img-panel to-right-close'
+  const imgPanel1 = check 
+    ? reg ? 'img-panel-fon-1 to-right-open' : 'img-panel-fon-1 to-right-close'
+    : 'img-panel-fon-1'
+  const imgPanel2 = check
+    ? reg ? 'img-panel-fon-2 to-left-close' : 'img-panel-fon-2 to-left-open'
+    : 'img-panel-fon-2'
+  const row = check 
+    ? reg ? 'row row-anim' : 'row-rev row-rev-anim'
+    : 'row'
 
-  // useEffect(() => {
-  //   imgStyle = 'img-panel'
-  // })
 
-  console.log(imgStyle);
   
   //<--------------------JSX COMPONENT------------------->
   return (
     <div className='register'>
       <div className="container">
         <div className="wrapper">
-          <RegisterHeader reg={reg} setReg={setReg} />
-          <div className="row">
-            <RegisterPanel />
+          <RegisterHeader reg={reg} setReg={setReg} setCheck={setCheck} />
+          <div className={row}>
+            <RegisterPanel reg={reg} />
             <div className='col'></div>
           </div>
         </div>
       </div>
-      <div className={imgStyle}>
-        <div className="img-panel-wrapper"></div>
+      
+      <div className='img-panel' >
+        <div className={imgPanel1} ></div>
+        <div className={imgPanel2} ></div>
       </div>
 
     </div>
