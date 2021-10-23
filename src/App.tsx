@@ -15,6 +15,8 @@ import './app.scss'
 //<--------------------COMPONENT----------------------->
 const App: React.FC = () => {
 
+  const isReg = false
+
   var docWidth = document.documentElement.offsetWidth;
 [].forEach.call(
   document.querySelectorAll('*'),
@@ -28,10 +30,12 @@ const App: React.FC = () => {
   return (
     <BrowserRouter>
         <Switch>
-          <Route exact path='/' component={Main} />
+          <Route exact path='/main' >
+            {isReg ? <Main /> : <Redirect to='/register' />}
+          </Route>
           <Route path='/register' component={Registration} />
           <Route path='/card/:username/:reponame' component={CardRepo} />
-          <Redirect to="/" />
+          <Redirect to="/main" />
         </Switch>
     </BrowserRouter>
   );
