@@ -15,7 +15,7 @@ import './app.scss'
 //<--------------------COMPONENT----------------------->
 const App: React.FC = () => {
 
-  const isReg = false
+  const isReg = true
 
   var docWidth = document.documentElement.offsetWidth;
 [].forEach.call(

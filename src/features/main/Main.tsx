@@ -1,16 +1,15 @@
 
 //<--------------------IMPORT-------------------------->
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
-import { setCurrentPage } from '../../reducers/reposReducer';
-import { getRepos } from '../../components/actions/repos';
+//import { setCurrentPage } from '../../reducers/reposReducer';
 import './main.scss'
 import Repo from './repo/Repo';
 import Pagination from '../../components/Pagination';
-import { useTypeSelector } from '../../hooks/useTypeSelector';
 //@ts-ignore
-import { Redirect } from 'react-router-dom';
+import { useTypeDispatch, useTypeSelector } from '../../hooks/redux';
+import { getRepos } from '../../reducers/actions/reposAction';
+import { setCurrentPage } from '../../reducers/reposSlice';
+import { useGetReposQuery } from '../../reducers/actions/reposApi';
 
 
 //<--------------------COMPONENT----------------------->
@@ -21,21 +20,26 @@ const Main: React.FC = () => {
 
 
 //<--------------------SUBSIDIARY---------------------->
-  const dispatch = useDispatch()
-
-
-//<--------------------DATA AND STATES----------------->
-  const { repos } = useTypeSelector(state => state.repos)
-  const { isFetching, currentPage, totalCount } = useTypeSelector(state => state.repos)
+  const dispatch = useTypeDispatch()
+  
+  
+  //<--------------------DATA AND STATES----------------->
+  //const { reposList } = useTypeSelector(state => state.repos)
+  const { currentPage, totalCount } = useTypeSelector(state => state.repos)
   const [searchValue, setSearchValue] = useState('')
   const perPage: number = 10
 
+  const { data, isFetching } = useGetReposQuery({searchQuery: searchValue, currentPage, perPage})
+
+  console.log(data)
+  
 
 
 //<--------------------USE EFFECT---------------------->
-  useEffect(() => {
-    getRepos(searchValue, currentPage, perPage)(dispatch)
-  }, [currentPage])
+  // useEffect(() => {
+  //   dispatch(getRepos({searchQuery: searchValue, currentPage, perPage}))
+  //  // getRepos(searchValue, currentPage, perPage)(dispatch)
+  // }, [currentPage])
 
 
 //<--------------------SUBSIDIARY FUNCTION------------->
@@ -50,8 +54,8 @@ const Main: React.FC = () => {
    * Поиск репозиториев 
    */
   const searchRepo = () => {
-    dispatch(setCurrentPage(1))
-    getRepos(searchValue, currentPage, perPage)(dispatch)
+    //dispatch(setCurrentPage(1))
+    //getRepos(searchValue, currentPage, perPage)(dispatch)
   }
 
   /**
@@ -59,7 +63,9 @@ const Main: React.FC = () => {
    * @param {*} page - номер страницы
    */
   const changeCurrentPage = (page: number) => {
-    dispatch(setCurrentPage(page))
+    //dispatch(setCurrentPage(page))
+    console.log('123')
+    dispatch(setCurrentPage({page}))
   }
 
 
@@ -75,8 +81,7 @@ const Main: React.FC = () => {
           ?
           <div className='fetching'></div>
           :
-          repos.map(repo => {
-            console.log(repo)
+          data.items.map((repo: any) => {
             return <Repo repo={repo} key={repo.id + repo.node_id} />
           })
       }

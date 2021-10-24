@@ -6,7 +6,8 @@ import { useDispatch } from 'react-redux';
 // @ts-ignore
 import { useParams } from 'react-router';
 import { getCurrentRepo } from '../../components/actions/repos';
-import { useTypeSelector } from '../../hooks/useTypeSelector';
+import { useTypeDispatch, useTypeSelector } from '../../hooks/redux';
+import { useGetCurrentRepoQuery } from '../../reducers/actions/reposApi';
 import { ReposType } from '../../types/types';
 
 
@@ -24,19 +25,22 @@ const CardRepo: React.FC<PropsType> = (props) => {
 
 
 //<--------------------SUBSIDIARY---------------------->
-  const dispatch = useDispatch()
+  const dispatch = useTypeDispatch
+  console.log(123)
 
 
 //<--------------------DATA AND STATES----------------->
   const { username, reponame } = useParams()
-  const [repo, setRepo] = useState({})
-  const { isFetching } = useTypeSelector(state => state.repos)
+  //const [repo, setRepo] = useState({})
+  //const { isFetching } = useTypeSelector(state => state.repos)
+  const { data, isFetching } = useGetCurrentRepoQuery({username, reponame})
 
+  console.log(data)
 
 //<--------------------USE EFFECT---------------------->
-  useEffect(() => {
-    getCurrentRepo(username, reponame, setRepo, dispatch)
-  }, [])
+  // useEffect(() => {
+  //   getCurrentRepo(username, reponame, setRepo, dispatch)
+  // }, [])
   
 
 //<--------------------JSX COMPONENT------------------->
