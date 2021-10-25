@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 // @ts-ignore
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
-import Main from './features/main/Main';
+import Main from './features/main';
 import CardRepo from './features/CardRepo';
 import Registration from './features/Registration';
 //@ts-ignore
@@ -15,17 +15,9 @@ import './app.scss'
 //<--------------------COMPONENT----------------------->
 const App: React.FC = () => {
 
-  const isReg = false
+  const isReg = true
 
-  var docWidth = document.documentElement.offsetWidth;
-[].forEach.call(
-  document.querySelectorAll('*'),
-  function(el: any) {
-    if (el.offsetWidth > docWidth) {
-      console.log(el);
-    }
-  }
-);
+  
 //<--------------------JSX COMPONENT------------------->
   return (
     <BrowserRouter>

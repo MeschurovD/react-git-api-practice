@@ -23,8 +23,11 @@ const styleHelper: StyleHelperType = (styles, reg, checkFirstDownload, invalidIn
   
 
   const btnStyle = checkFirstDownload
-    ? reg ? `${styles.btnSignIn} ${styles.btn_color_2} ${styles.btnAnimSign} ${styles.btnSignUpAnim}` : `${styles.btnSignIn} ${styles.btn_color_1} ${styles.btnAnimReg} ${styles.btnSignDownAnim}`
+    ? reg 
+      ? `${styles.btnSignIn} ${styles.btn_color_2} ${styles.btnAnimSign} ${styles.btnSignUpAnim}` 
+      : `${styles.btnSignIn} ${styles.btn_color_1} ${styles.btnAnimReg} ${styles.btnSignDownAnim}`
     : `${styles.btnSignIn} ${styles.btn_color_2} ${styles.btnAnimSign}`
+
   const headerStyle = reg ? `${styles.panel__card_header} ${styles.text_color_2}` : `${styles.panel__card_header} ${styles.text_color_1}`
   
   const inputStyleEmail = (reg

@@ -13,7 +13,6 @@ const Registration: React.FC = () => {
 
   const [reg, setReg] = useState(true)
   const [checkFirstDownload, setCheckFirstDownload] = useState(false)
-  console.log(styles)
   
   const imgPanel1 = checkFirstDownload 
     ? reg ? `${styles.imgPanel_fon_1} ${styles.to_right_open}` : `${styles.imgPanel_fon_1} ${styles.to_right_close}`

@@ -18,6 +18,8 @@
   color: $color-white;
 }
 
+////////////////////////////////////
+// TEXT-GRADIENT
 .text_color_1 {
   background-image: linear-gradient(310deg, $gradient-1-start, $gradient-1-finish);
   -webkit-background-clip: text;
