@@ -1,33 +1,36 @@
-@use '../../../../style/components/variables' as *;
-@use '../../../../style/components/utils' as *;
-@use '../../../../style/components/animation' as *;
 
 .panel__column {
   display: flex;
   justify-content: center;
 }
 
+.col {
+  flex: 1 1 50%;
+  height: 65vh;
+  z-index: 1;
+}
+
 .panel__card {
-  width: $container-w / 3;
+  width: calc($container-w / 3);
   margin-top: 20vh;
 
-  &-header {
-    @include font(2.4rem, 600);
+  &_header {
+    @include font(2.4rem, 600, none);
     padding: 2.4rem 2.4rem 0;
     margin-bottom: .8rem;
   }
 
-  &-body {
+  &_body {
     display: flex;
     flex-direction: column;
     padding: 2.4rem;
 
-    &-title {
+    &_title {
       @include font(1.2rem, 700, $font-color-dark);
       margin: 0 0 .8rem .4rem;
     }
 
-    .btn-sign-in {
+    .btnSignIn {
       padding: 1.2rem 2.4rem;
       margin: 2.4rem 0 0;
       border: none;
@@ -50,17 +53,17 @@
   }
 }
 
-.btn-sign-down-anim {
+.btnSignDownAnim {
   animation: btnSignDown;
   animation-duration: 1s;
 }
 
-.btn-sign-up-anim {
+.btnSignUpAnim {
   animation: btnSignUp;
   animation-duration: 1s;
 }
 
-.input-invalid-anim {
+.inputInvalidAnim {
   animation: inputColorAnim;
   animation-duration: 1s;
 }

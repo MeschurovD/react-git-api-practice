@@ -1,16 +1,14 @@
 
 //<--------------------IMPORT-------------------------->
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
-import { setCurrentPage } from '../../reducers/reposReducer';
-import { getRepos } from '../../components/actions/repos';
-import './main.scss'
 import Repo from './repo/Repo';
 import Pagination from '../../components/Pagination';
-import { useTypeSelector } from '../../hooks/useTypeSelector';
 //@ts-ignore
-import { Redirect } from 'react-router-dom';
+import { useTypeDispatch, useTypeSelector } from '../../hooks/redux';
+import { setCurrentPage } from '../../reducers/reposSlice';
+import { useGetReposQuery } from '../../reducers/actions/reposApi';
+//@ts-ignore
+import styles from './main.module.scss'
 
 
 //<--------------------COMPONENT----------------------->
@@ -21,28 +19,24 @@ const Main: React.FC = () => {
 
 
 //<--------------------SUBSIDIARY---------------------->
-  const dispatch = useDispatch()
-
-
-//<--------------------DATA AND STATES----------------->
-  const { repos } = useTypeSelector(state => state.repos)
-  const { isFetching, currentPage, totalCount } = useTypeSelector(state => state.repos)
+  const dispatch = useTypeDispatch()
+  
+  
+  //<--------------------DATA AND STATES----------------->
+  const { currentPage, totalCount } = useTypeSelector(state => state.repos)
   const [searchValue, setSearchValue] = useState('')
+  const [check, setCheck] = useState(false)
   const perPage: number = 10
 
+  const { data, isFetching } = useGetReposQuery({searchQuery: searchValue, currentPage, perPage}, {skip: check})
 
-
-//<--------------------USE EFFECT---------------------->
-  useEffect(() => {
-    getRepos(searchValue, currentPage, perPage)(dispatch)
-  }, [currentPage])
-
-
+  
 //<--------------------SUBSIDIARY FUNCTION------------->
   /**
    * Изменение значения input - поисковой строки
    */
   const changeInputValue = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCheck(true)
     setSearchValue(e.target.value)
   }
 
@@ -50,8 +44,9 @@ const Main: React.FC = () => {
    * Поиск репозиториев 
    */
   const searchRepo = () => {
-    dispatch(setCurrentPage(1))
-    getRepos(searchValue, currentPage, perPage)(dispatch)
+    dispatch(setCurrentPage({page: 1}))
+    setCheck(false)
+    //getRepos(searchValue, currentPage, perPage)(dispatch)
   }
 
   /**
@@ -59,24 +54,23 @@ const Main: React.FC = () => {
    * @param {*} page - номер страницы
    */
   const changeCurrentPage = (page: number) => {
-    dispatch(setCurrentPage(page))
+    dispatch(setCurrentPage({page}))
   }
 
 
 //<--------------------JSX COMPONENT------------------->
   return (
     <div>
-      <div className='search'>
-        <input value={searchValue} onChange={changeInputValue} type='text' placeholder='Введите название репозитория' className="search__input" />
-        <button className="search__button" onClick={searchRepo}>Search</button>
+      <div className=''>
+        <input value={searchValue} onChange={changeInputValue} type='text' placeholder='Введите название репозитория' className="" />
+        <button className="" onClick={searchRepo}>Search</button>
       </div>
       {
         isFetching
           ?
-          <div className='fetching'></div>
+          <div className=''>Загрузка</div>
           :
-          repos.map(repo => {
-            console.log(repo)
+          data.items.map((repo: any) => {
             return <Repo repo={repo} key={repo.id + repo.node_id} />
           })
       }

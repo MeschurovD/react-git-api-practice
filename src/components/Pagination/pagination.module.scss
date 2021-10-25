@@ -1,13 +1,13 @@
 .pages {
   
-  .page, .current-page {
+  .page, .currentPage {
     border: 1px solid black;
     border-radius: 100%;
     padding: 5px 10px;
     margin-right: 10px;
     cursor: pointer;
   }
-  .current-page {
+  .currentPage {
     border: 2px solid black;
   }
   

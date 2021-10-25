@@ -4,14 +4,13 @@ import { StatusValidation } from './../../../../utils/isValidate';
 interface TrueStyle {
   btnStyle: string
   headerStyle: string
-  headerTitle: string
   inputStyleEmail: string
   inputStylePassword: string
-  sign: string
 }
 
 interface StyleHelperType {
   (
+    styles: any,
     reg: boolean,
     checkFirstDownload: boolean,
     invalidInput: StatusValidation
@@ -19,37 +18,43 @@ interface StyleHelperType {
 }
 
 
-const styleHelper: StyleHelperType = (reg, checkFirstDownload, invalidInput) => {
-  console.log(invalidInput);
+const styleHelper: StyleHelperType = (styles, reg, checkFirstDownload, invalidInput) => {
+  console.log(styles);
   
 
   const btnStyle = checkFirstDownload
-    ? reg ? 'btn-sign-in btn-color-2 btn-anim-sign btn-sign-up-anim' : 'btn-sign-in btn-color-1 btn-anim-reg btn-sign-down-anim'
-    : 'btn-sign-in btn-color-2 btn-anim-sign'
-  const headerStyle = reg ? 'panel__card-header text-color-2' : 'panel__card-header text-color-1'
-  const headerTitle = reg ? 'login' : 'registration'
+    ? reg 
+      ? `${styles.btnSignIn} ${styles.btn_color_2} ${styles.btnAnimSign} ${styles.btnSignUpAnim}` 
+      : `${styles.btnSignIn} ${styles.btn_color_1} ${styles.btnAnimReg} ${styles.btnSignDownAnim}`
+    : `${styles.btnSignIn} ${styles.btn_color_2} ${styles.btnAnimSign}`
+
+  const headerStyle = reg ? `${styles.panel__card_header} ${styles.text_color_2}` : `${styles.panel__card_header} ${styles.text_color_1}`
+  
   const inputStyleEmail = (reg
-    ? 'input-r left' 
-    : 'input-r right') 
+    ? `${styles.input_r} ${styles.left}` 
+    : `${styles.input_r} ${styles.right}`) 
     + (invalidInput === StatusValidation.EMAIL_ERROR || invalidInput === StatusValidation.EMAIL_AND_PASSWORD_ERROR
-      ? ' input-invalid-anim'
+      ? ` ${styles.inputInvalidAnim}`
       : '')
   const inputStylePassword = (reg
-    ? 'input-r left'
-    : 'input-r right') 
+    ? `${styles.input_r} ${styles.left}`
+    : `${styles.input_r} ${styles.right}`) 
     + (invalidInput === StatusValidation.PASSWORD_ERROR || invalidInput === StatusValidation.EMAIL_AND_PASSWORD_ERROR 
-      ? ' input-invalid-anim'
+      ? ` ${styles.inputInvalidAnim}`
       : '')
 
-  const sign = reg ? 'Sing in' : 'Sing up'
+  
+
+  console.log(btnStyle)
+  console.log(headerStyle)
+  console.log(inputStyleEmail)
+  console.log(inputStylePassword)
 
   return {
     btnStyle,
     headerStyle,
-    headerTitle,
     inputStyleEmail,
     inputStylePassword,
-    sign
   }
 }
 
