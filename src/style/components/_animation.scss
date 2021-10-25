@@ -1,4 +1,3 @@
-@use 'variables' as *;
 @use '_animation-helpers' as *;
 
 //Поднятие кнопки при наведении
@@ -45,7 +44,7 @@
 
 
 //Анимация кнопки Sing in
-.btn-anim-sign {
+.btnAnimSign {
   @extend %btn-anim;
   &::after {
     background-image: linear-gradient(310deg, $gradient-2-start, $gradient-2-finish);
@@ -53,7 +52,7 @@
 }
 
 //Анимация кнопки Sing up
-.btn-anim-reg {
+.btnAnimReg {
   @extend %btn-anim;
   &::after {
     background-image: linear-gradient(310deg, $gradient-1-start, $gradient-1-finish);

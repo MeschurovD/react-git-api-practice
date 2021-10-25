@@ -10,18 +10,18 @@
     flex-wrap: wrap;
     transition: all 1s;
 
-    &-anim {
+    &Anim {
       animation: registrAnimationToRight;
       animation-duration: 1s;
     }
   }
   //При регистрации
-  .row-rev {
+  .rowRev {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row-reverse;
 
-    &-anim {
+    &Anim {
       animation: registrAnimationToLeft;
       animation-duration: 1s;
     }
@@ -35,7 +35,7 @@
 }
 
 //Картинка
-.img-panel {
+.imgPanel {
   position: absolute;
   top: -2rem;
   right: 0;
@@ -54,14 +54,14 @@
     transform: skewX(-10deg);
   }
 
-  &-fon-1 {
+  &_fon_1 {
     @extend %fon;
     right: 0;
     margin-right: -30rem;
     background-image: url("../../../img/fon-1-min.png");
   }
 
-  &-fon-2 {
+  &_fon_2 {
     @extend %fon;
     left: -100%;
     background-image: url("../../../img/fon-2.jpg");
@@ -71,24 +71,24 @@
 
 
 
-.to-right-close {
+.to_right_close {
   animation: toRightClose;
   animation-duration: 1s;
   animation-fill-mode: forwards;
 }
 
-.to-right-open {
+.to_right_open {
   animation: toRightOpen;
   animation-duration: 1s;
 }
 
-.to-left-open {
+.to_left_open {
   animation: toLeftOpen;
   animation-duration: 1s;
   animation-fill-mode: forwards;
 }
 
-.to-left-close {
+.to_left_close {
   animation: toLeftClose;
   animation-duration: 1s;
 }

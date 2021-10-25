@@ -3,8 +3,9 @@
 import React, { useEffect, useState } from 'react';
 import RegisterHeader from './components/RegisterHeader';
 import RegisterPanel from './components/RegisterPanel';
-
-import './registration.scss'
+//@ts-ignore
+import styles from './registration.module.scss'
+//import style from './registration.module.scss'
 
 
 //<--------------------COMPONENT----------------------->
@@ -12,33 +13,34 @@ const Registration: React.FC = () => {
 
   const [reg, setReg] = useState(true)
   const [checkFirstDownload, setCheckFirstDownload] = useState(false)
+  console.log(styles)
   
   const imgPanel1 = checkFirstDownload 
-    ? reg ? 'img-panel-fon-1 to-right-open' : 'img-panel-fon-1 to-right-close'
-    : 'img-panel-fon-1'
+    ? reg ? `${styles.imgPanel_fon_1} ${styles.to_right_open}` : `${styles.imgPanel_fon_1} ${styles.to_right_close}`
+    : styles.imgPanel_fon_1
   const imgPanel2 = checkFirstDownload
-    ? reg ? 'img-panel-fon-2 to-left-close' : 'img-panel-fon-2 to-left-open'
-    : 'img-panel-fon-2'
+    ? reg ? `${styles.imgPanel_fon_2} ${styles.to_left_close}` : `${styles.imgPanel_fon_2} ${styles.to_left_open}`
+    : styles.imgPanel_fon_2
   const row = checkFirstDownload 
-    ? reg ? 'row row-anim' : 'row-rev row-rev-anim'
-    : 'row'
+    ? reg ? `${styles.row} ${styles.rowAnim}` : `${styles.rowRev} ${styles.rowRevAnim}`
+    : styles.row
 
 
   
   //<--------------------JSX COMPONENT------------------->
   return (
-    <div className='register'>
-      <div className="container">
-        <div className="wrapper">
+    <div className={styles.register}>
+      <div className={styles.container}>
+        <div className={styles.wrapper}>
           <RegisterHeader reg={reg} setReg={setReg} setCheckFirstDownload={setCheckFirstDownload} />
           <div className={row}>
             <RegisterPanel reg={reg} checkFirstDownload={checkFirstDownload} />
-            <div className='col'></div>
+            <div className={styles.col}></div>
           </div>
         </div>
       </div>
       
-      <div className='img-panel' >
+      <div className={styles.imgPanel} >
         <div className={imgPanel1} ></div>
         <div className={imgPanel2} ></div>
       </div>

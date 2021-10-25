@@ -2,8 +2,8 @@
 //<--------------------IMPORT-------------------------->
 import React from 'react';
 import usePages from '../../hooks/usePages';
-
-import './pagination.scss'
+//@ts-ignore
+import styles from './pagination.module.scss'
 
 
 //<--------------------TYPE---------------------------->
@@ -25,12 +25,12 @@ const Pagination: React.FC<PropsType> = ({currentPage, totalCount, perPage, chan
 
 //<--------------------JSX COMPONENT------------------->
   return (
-    <div className="pages">
+    <div className={styles.pages}>
         {
           pages.map((page, index) =>
             <span
               key={index}
-              className={page === currentPage ? 'current-page' : 'page'}
+              className={page === currentPage ? styles.currentPage : styles.page}
               onClick={() => changeCurrentPage(page)}
             >
               {page}

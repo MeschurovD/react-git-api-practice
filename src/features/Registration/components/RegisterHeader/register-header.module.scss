@@ -1,10 +1,6 @@
 //@use '../../../../style/base.scss' as *;
-@use "../../../../style/components/variables" as *;
-@use "../../../../style/components/utils" as *;
-@use "../../../../style/components/animation" as *;
-
 //Верхняя панель
-.register-header {
+.registerHeader {
   @include absolute($l: 0, $r: 0);
   margin: -1.6rem auto;
   border-radius: 4rem;
@@ -25,7 +21,7 @@
   }
 
   //Активная кнопка
-  &__sing-active {
+  &__singActive {
     padding: 0.8rem 3.2rem;
     border-radius: 4rem;
     border: none;

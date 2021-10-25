@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import isValidate, { StatusValidation } from '../../../../utils/isValidate';
 import styleHelper from './styleHelper';
-
-import './register-panel.scss'
+//@ts-ignore
+import styles from './panel.module.scss'
+//@ts-ignore
+import stylesReg from '../../registration.module.scss'
 
 interface PropsType {
   reg: boolean
@@ -16,6 +18,8 @@ const RegisterPanel: React.FC<PropsType> = ({ reg, checkFirstDownload }) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [invalidInput, setInvalidInput] = useState<StatusValidation>(StatusValidation.TRUE)
+  const headerTitle = reg ? 'login' : 'registration'
+  const sign = reg ? 'Sing In' : 'Sing Up'
 
 
   // useEffect(() => {
@@ -37,11 +41,17 @@ const RegisterPanel: React.FC<PropsType> = ({ reg, checkFirstDownload }) => {
   const {
     btnStyle,
     headerStyle,
-    headerTitle,
     inputStyleEmail,
     inputStylePassword,
-    sign
-  } = styleHelper(reg, checkFirstDownload, invalidInput)
+  } = styleHelper(styles, reg, checkFirstDownload, invalidInput)
+
+  // console.log(btnStyle)
+  // console.log(headerStyle)
+  // console.log(headerTitle)
+  // console.log(inputStyleEmail)
+  // console.log(inputStylePassword)
+  // console.log(sign)
+  
 
   //<--------------------HANDLERS------------------------>
   const onChangeEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -70,18 +80,17 @@ const RegisterPanel: React.FC<PropsType> = ({ reg, checkFirstDownload }) => {
 
 
   }
-  console.log(email + ' ' + password);
 
   //<--------------------JSX COMPONENT------------------->
   return (
-    <div className="col">
-      <div className='panel__column'>
-        <div className="panel__card">
+    <div className={stylesReg.col}>
+      <div className={styles.panel__column}>
+        <div className={styles.panel__card}>
           <div className={headerStyle} >Github info - {headerTitle}</div>
 
-          <div className="panel__card-body">
+          <div className={styles.panel__card_body}>
             {/*---EMAIL---*/}
-            <div className="panel__card-body-title">Email</div>
+            <div className={styles.panel__card_body_title}>Email</div>
             <input
               className={inputStyleEmail}
               placeholder='Email'
@@ -89,7 +98,7 @@ const RegisterPanel: React.FC<PropsType> = ({ reg, checkFirstDownload }) => {
               onChange={onChangeEmail}
             />
             {/*---PASSWORD---*/}
-            <div className="panel__card-body-title">Password</div>
+            <div className={styles.panel__card_body_title}>Password</div>
             <input
               type='password'
               className={inputStylePassword}
@@ -101,7 +110,7 @@ const RegisterPanel: React.FC<PropsType> = ({ reg, checkFirstDownload }) => {
             {
               !reg &&
               <>
-                <div className="panel__card-body-title">Password Check</div>
+                <div className={styles.panel__card_body_title}>Password Check</div>
                 <input type='password' className={inputStylePassword} placeholder='Password check' />
               </>
             }

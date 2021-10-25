@@ -8,14 +8,14 @@ import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import Main from './features/main/Main';
 import CardRepo from './features/CardRepo';
 import Registration from './features/Registration';
-
+//@ts-ignore
 import './app.scss'
 
 
 //<--------------------COMPONENT----------------------->
 const App: React.FC = () => {
 
-  const isReg = true
+  const isReg = false
 
   var docWidth = document.documentElement.offsetWidth;
 [].forEach.call(

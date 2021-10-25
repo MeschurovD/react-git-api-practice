@@ -11,6 +11,8 @@ import { getRepos } from '../../reducers/actions/reposAction';
 import { setCurrentPage } from '../../reducers/reposSlice';
 import { useGetReposQuery } from '../../reducers/actions/reposApi';
 
+import Test from './test'
+
 
 //<--------------------COMPONENT----------------------->
 /**
@@ -72,6 +74,7 @@ const Main: React.FC = () => {
 //<--------------------JSX COMPONENT------------------->
   return (
     <div>
+      <Test />
       <div className='search'>
         <input value={searchValue} onChange={changeInputValue} type='text' placeholder='Введите название репозитория' className="search__input" />
         <button className="search__button" onClick={searchRepo}>Search</button>
