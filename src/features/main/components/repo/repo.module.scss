@@ -1,0 +1,11 @@
+
+.repo {
+  display: flex;
+  flex-direction: column;
+  @include box-standart(.5, 1);
+
+
+ margin-bottom: 3rem;
+
+ transition: all .5s;
+}

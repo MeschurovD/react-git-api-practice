@@ -47,6 +47,27 @@
   }
 }
 
+@mixin box-standart($c1: .5, $c2: 1) {
+  border-radius: 1rem;
+  background-color: rgba($color-white, $c1);
+  border: 1px solid $color-white;
+  backdrop-filter: saturate(200%) blur(3rem);
+  &:hover {
+    background-color: rgba($color-white, $c2);
+    @include shadow-box-standard;
+  }
+}
+
+@mixin btn-standart {
+  border-radius: 1rem;
+  padding: 1.2rem 2.4rem;
+  outline: none;
+  border: none;
+}
+
+@mixin panel-base {
+  
+}
 
 .dis-none {
   display: none;

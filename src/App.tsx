@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 // @ts-ignore
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
-import Main from './features/main';
+import Main from './features/Main';
 import CardRepo from './features/CardRepo';
 import Registration from './features/Registration';
 //@ts-ignore

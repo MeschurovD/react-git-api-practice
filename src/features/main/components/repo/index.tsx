@@ -3,7 +3,9 @@
 import React from 'react';
 // @ts-ignore
 import { NavLink } from 'react-router-dom';
-import './repo.scss'
+//import './repo.scss'
+//@ts-ignore
+import styles from './repo.module.scss'
 
 
 //<--------------------TYPE---------------------------->
@@ -30,7 +32,7 @@ const Repo: React.FC<PropsType> = (props) => {
   
 //<--------------------JSX COMPONENT------------------->
   return (
-    <div className='repo'>
+    <div className={styles.repo}>
       <div className="repo__header">
         <div className="repo__header-title"><NavLink to={`/card/${repo.owner.login}/${repo.name}`} >{repo.name}</NavLink></div>
         <div className="repo__header-stars">
@@ -38,11 +40,13 @@ const Repo: React.FC<PropsType> = (props) => {
           <div className="repo__header-star-count">{repo.stargazers_count}</div>
         </div>
       </div>
+      <div>aaa</div>
       <div className="repo__body">
+        
         <div className="repo__body-update">Последний коммит: {repo.updated_at}</div>
-        <a className="repo__body-url" href={repo.html_url}>
+        {/* <a className="repo__body-url" href={repo.html_url}>
           <div>Репозиторий</div>
-        </a>
+        </a> */}
       </div>
     </div>
   );
