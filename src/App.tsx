@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 // @ts-ignore
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import Main from './features/Main';
-import CardRepo from './features/CardRepo';
+import Repository from './features/Repository';
 import Registration from './features/Registration';
 //@ts-ignore
 import './app.scss'
@@ -26,7 +26,7 @@ const App: React.FC = () => {
             {isReg ? <Main /> : <Redirect to='/register' />}
           </Route>
           <Route path='/register' component={Registration} />
-          <Route path='/card/:username/:reponame' component={CardRepo} />
+          <Route path='/card/:username/:reponame' component={Repository} />
           <Redirect to="/main" />
         </Switch>
     </BrowserRouter>

@@ -1,7 +1,7 @@
 
 //<--------------------IMPORT-------------------------->
 import React, { useEffect, useState } from 'react';
-import Repo from './components/repo';
+import CardRepo from './components/CardRepo';
 import Pagination from '../../components/Pagination';
 //@ts-ignore
 import { useTypeDispatch, useTypeSelector } from '../../hooks/redux';
@@ -9,8 +9,9 @@ import { setCurrentPage } from '../../reducers/reposSlice';
 import { useGetReposQuery } from '../../reducers/actions/reposApi';
 //@ts-ignore
 import styles from './main.module.scss'
-import MainHeader from './components/MainHeader';
+import MainHeader from '../MainHeader';
 import Navbar from './components/Navbar';
+import Background from '../Background';
 
 
 //<--------------------COMPONENT----------------------->
@@ -26,8 +27,7 @@ const Main: React.FC = () => {
 
   //<--------------------DATA AND STATES----------------->
   const { currentPage, totalCount } = useTypeSelector(state => state.repos)
-  const [searchValue, setSearchValue] = useState('')
-  const [check, setCheck] = useState(false)
+  const {check, searchValue} = useTypeSelector(state => state.search)
   const perPage: number = 10
 
   const { data, isFetching } = useGetReposQuery({ searchQuery: searchValue, currentPage, perPage }, { skip: check })
@@ -48,11 +48,11 @@ const Main: React.FC = () => {
   //<--------------------JSX COMPONENT------------------->
   return (
     <main className={styles.main_wrapper}>
-
+      <Background />
       {/* <Navbar /> */}
 
       <div className={styles.container}>
-        <MainHeader setCheck={setCheck} searchValue={searchValue} setSearchValue={setSearchValue} />
+        <MainHeader />
         <div className={styles.main_body}>
           {
             isFetching
@@ -60,7 +60,7 @@ const Main: React.FC = () => {
               <div className={styles.fetching}>Загрузка</div>
               :
               data.items.map((repo: any) => {
-                return <Repo repo={repo} key={repo.id + repo.node_id} />
+                return <CardRepo repo={repo} key={repo.id + repo.node_id} />
               })
           }
           {!isFetching &&
