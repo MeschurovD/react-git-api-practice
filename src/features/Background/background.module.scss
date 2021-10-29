@@ -1,0 +1,75 @@
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -10;
+  overflow: hidden;
+  background-image: linear-gradient(45deg, rgba($gradient-2-start, .5) 11%, rgba($gradient-2-finish, .5) 70%);
+
+  .test_1 {
+    position: absolute;
+    transform: translateY(70vh) translateX(-40vw) rotate(30deg);
+    background-image: linear-gradient(
+      50deg,
+      rgba($gradient-2-start, 0.1) 0%,
+      40%,
+      rgba($gradient-2-start, .7),
+      rgba($gradient-2-finish, .5),
+      rgba($gradient-2-finish, .01) 90%
+    );
+    mix-blend-mode: multiply;
+    height: 100vh;
+    width: 50vw;
+    animation: anim-bg-1 7s infinite;
+  }
+
+  .test_2 {
+    position: absolute;
+    transform: translateY(90vh) translateX(-10vw) rotate(10deg);
+    background-image: linear-gradient(
+      90deg,
+      rgba($gradient-2-start, 0.1) 0%,
+      40%,
+      rgba($gradient-2-finish, .7),
+      rgba($gradient-2-finish, .7) 60%,
+      rgba($gradient-2-start, .1),
+      rgba($gradient-2-start, .01) 
+    );
+    mix-blend-mode: multiply;
+    height: 100vh;
+    width: 50vw;
+    transition: all 5s;
+    animation: anim-bg-2 10s infinite;
+  }
+}
+
+@keyframes anim-bg-1 {
+  0% {
+    transform: translateY(70vh) translateX(-40vw) rotate(30deg);
+  }
+
+  50% {
+    transform: translateY(65vh) translateX(-40vw) rotate(30deg);
+  }
+
+  100% {
+    transform: translateY(70vh) translateX(-40vw) rotate(30deg);
+  }
+}
+
+@keyframes anim-bg-2 {
+  0% {
+    transform: translateY(90vh) translateX(-10vw) rotate(10deg);
+  }
+
+  50% {
+    transform: translateY(93vh) translateX(-15vw) rotate(10deg);
+  }
+
+  100% {
+    transform: translateY(90vh) translateX(-10vw) rotate(10deg);
+  }
+}
+
