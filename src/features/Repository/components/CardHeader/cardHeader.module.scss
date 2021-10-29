@@ -1,0 +1,29 @@
+
+.header {
+  margin-top: 2.5rem;
+  padding: 1.6rem;
+
+  .headerImg {
+    background-image: url('../../../../../img/fon-2.jpg');
+    background-size: cover;
+    min-height: 30rem;
+    width: 100%;
+    border-radius: 1rem;
+
+  }
+
+  .headerMenu {
+    @include box(.8);
+
+    margin-top: -4rem;
+    margin-right: 2.4rem;
+    margin-left: 2.4rem;
+
+    &_fetching {
+      
+    }
+    .test {
+      height: 8rem;
+    }
+  }
+}
