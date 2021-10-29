@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { KeyboardEventHandler, useEffect, useState } from 'react';
 import { useTypeDispatch } from '../../hooks/redux';
 import { setCurrentPage } from '../../reducers/reposSlice';
 import { setCheck, setSearch } from '../../reducers/searchSlice';
@@ -39,8 +39,14 @@ const MainSearch: React.FC<PropsType> = (props) => {
     dispatch(setSearch(searchValue))
     dispatch(setCheck(false))
     if (checkGoBack) props.goBack()
-    //setCheck(false)
-    //getRepos(searchValue, currentPage, perPage)(dispatch)
+  }
+
+  const onClickSearchRepo = () => {
+    searchRepo()
+  }
+
+  const onKeySearchRepo = (event: any) => {
+    if (event.key === 'Enter') searchRepo()
   }
 
   const changeScroll = () => {
@@ -63,6 +69,7 @@ const MainSearch: React.FC<PropsType> = (props) => {
   //<--------------------USE EFFECT---------------------->
   useEffect(() => {
     window.addEventListener('scroll', changeScroll)
+    return window.addEventListener('scroll', changeScroll)
   }, [])
 
 
@@ -91,9 +98,10 @@ const MainSearch: React.FC<PropsType> = (props) => {
               onChange={changeInputValue}
               type='text'
               placeholder='Введите название репозитория'
+              onKeyDown={onKeySearchRepo}
               className={styles.search_input}
             />
-            <button className={btnSearchStyle} onClick={searchRepo}>Search</button>
+            <button className={btnSearchStyle} onClick={onClickSearchRepo}>Search</button>
           </div>
           <div>login</div>
         </div>

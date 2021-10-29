@@ -1,0 +1,63 @@
+.fetching {
+  // &_item {
+  //   position: relative;
+  //   @include box-standart;
+  //   height: 15rem;
+  //   margin-bottom: 2rem;
+  //   overflow: hidden;
+  //   display: flex;
+  //   justify-content: center;
+  //   align-items: center;
+
+  //   &::before {
+  //     content: "";
+  //     position: absolute;
+  //     top: 0;
+  //     left: 0;
+  //     width: 2rem;
+  //     height: 100%;
+  //     background-color: rgba($color-white, .5);
+  //     transform: skewX(-30deg) translateX(-6rem);
+  //     animation: fetching-anim 2s infinite;
+  //     animation-delay: 1s;
+  //   }
+  // }
+
+  @for $i from 0 through 9 {
+    &_item_#{$i} {
+      position: relative;
+      @include box-standart;
+      height: 15rem;
+      margin-bottom: 2rem;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  
+      &::before {
+        $time: $i * .4 - .3;
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 12rem;
+        height: 100%;
+        //background-color: rgba($color-white, .5);
+        background-image: linear-gradient(90deg, rgba($color-white, .1), rgba($color-white, .9));
+        transform: skewX(-30deg) translateX(-20rem);
+        animation: fetching-anim 2s infinite;
+        animation-delay: $time + s;
+      }
+    }
+  }
+}
+
+@keyframes fetching-anim {
+  0% {
+    transform: skewX(-30deg) translateX(-15rem);
+  }
+
+  100% {
+    transform: skewX(-30deg) translateX(130rem);
+  }
+}

@@ -4,11 +4,7 @@ import styles from './background.module.scss'
 
 const Background = () => {
 
-  const bgColor = []
-  for (let i = 1; i < 21; i++) {
-    const style = ``
-    bgColor.push(<div className={styles[`bg_color_${i}`]} />)
-  }
+  
   return (
     <div className={styles.background}>
       <div className={styles.test_1}></div>

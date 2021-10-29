@@ -2,10 +2,12 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit"
 import { reposFetch } from "../reducers/actions/reposApi"
 import reposSlice from "../reducers/reposSlice"
+import searchSlice from "../reducers/searchSlice"
 
 
 const rootReducer = combineReducers({
   repos: reposSlice,
+  search: searchSlice,
   [reposFetch.reducerPath]: reposFetch.reducer
 })
 

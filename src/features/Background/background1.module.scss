@@ -1,0 +1,100 @@
+
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -10;
+  overflow: hidden;
+  background-image: linear-gradient(80deg, rgba($gradient-2-start, .5) 11%, $gradient-2-finish, transparent 81%, transparent 11%);
+
+  @mixin test {
+    $rn: random(100) + deg;
+    $x: random(40) + 50 + vw;
+    position: absolute;
+    background-image: linear-gradient(80deg, rgba($gradient-2-start, .1) 11%, rgba($gradient-2-start, .1) 11%, rgba($gradient-2-finish, .1) 11% );
+    width: 100vw;
+    height: 200vh;
+    transform: skewX($rn) translateX($x);
+    mix-blend-mode: multiply;
+  }
+
+  @for $y from 1 through 5 {
+    .test_#{$y} {
+      @include test;
+    }
+  }
+  .test1 {
+    position: absolute;
+    background-image: linear-gradient(310deg, $gradient-2-start, $gradient-2-finish);
+    width: 100vw;
+    height: 100vh;
+    transform: skewX(30deg);
+    mix-blend-mode: multiply;
+  }
+  .test2 {
+    position: absolute;
+    background-image: linear-gradient(310deg, $gradient-2-start, $gradient-2-finish);
+    width: 100vw;
+    height: 100vh;
+    transform: skewX(20deg);
+    mix-blend-mode: multiply;
+  }
+
+  @mixin bg-color($wv) {
+    
+    position: absolute;
+    mix-blend-mode: multiply;
+    width: $wv + rem;
+    height: $wv + rem;
+    border-radius: 50%;
+    
+
+    
+    filter: blur(2rem);
+  }
+
+  @for $j from 1 through 20 {
+    .bg_color_#{$j} {
+      $wv: random(20);
+      $gr: random(2);
+      @include bg-color($wv);
+      @if $gr == 1 {background-color: rgba($gradient-2-start, .5);}
+      @if $gr == 2 {background-color: rgba($gradient-2-finish, .5);}
+      left: random(80) + 10 + vw;
+      top: random(120) +vh;
+      animation: anim-bg-#{$j} 10s infinite;
+      animation-delay: random(3) + s;
+    }
+  }
+ 
+}
+
+
+
+@mixin anim-bg-color {
+  $c1: random(200) - 100 + px
+  
+}
+@for $i from 1 through 20 {
+  $u: random(99);
+  @keyframes anim-bg-#{$i} {
+    0% {
+      transform: translate(0px, 0px) scale(1);
+    }
+  
+    33% {
+      transform: translate(random(200) - 100 + px, random(200) - 100 + px) scale(1.2);
+    }
+  
+    66% {
+      transform: translate(random(200) - 100 + px, random(200) - 100 + px) scale(.8);
+    }
+  
+    100% {
+      transform: translate(0px, 0px) scale(1);
+    }
+  }
+
+}

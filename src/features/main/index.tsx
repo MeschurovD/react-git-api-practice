@@ -12,6 +12,7 @@ import styles from './main.module.scss'
 import MainHeader from '../MainHeader';
 import Navbar from './components/Navbar';
 import Background from '../Background';
+import Fetching from './components/Fetching';
 
 
 //<--------------------COMPONENT----------------------->
@@ -27,7 +28,7 @@ const Main: React.FC = () => {
 
   //<--------------------DATA AND STATES----------------->
   const { currentPage, totalCount } = useTypeSelector(state => state.repos)
-  const {check, searchValue} = useTypeSelector(state => state.search)
+  const { check, searchValue } = useTypeSelector(state => state.search)
   const perPage: number = 10
 
   const { data, isFetching } = useGetReposQuery({ searchQuery: searchValue, currentPage, perPage }, { skip: check })
@@ -42,6 +43,7 @@ const Main: React.FC = () => {
    */
   const changeCurrentPage = (page: number) => {
     dispatch(setCurrentPage({ page }))
+    window.scrollTo(0, 0)
   }
 
   console.log(styles)
@@ -57,19 +59,22 @@ const Main: React.FC = () => {
           {
             isFetching
               ?
-              <div className={styles.fetching}>Загрузка</div>
+              <Fetching />
               :
               data.items.map((repo: any) => {
                 return <CardRepo repo={repo} key={repo.id + repo.node_id} />
               })
           }
+
+        </div>
+        <div>
           {!isFetching &&
-          <Pagination
-            currentPage={currentPage}
-            totalCount={totalCount}
-            perPage={perPage}
-            changeCurrentPage={changeCurrentPage}
-          />}
+            <Pagination
+              currentPage={currentPage}
+              totalCount={totalCount}
+              perPage={perPage}
+              changeCurrentPage={changeCurrentPage}
+            />}
         </div>
       </div>
     </main>

@@ -1,24 +1,39 @@
-
 @mixin shadow-box {
-  box-shadow: 0 .4rem .6rem rgba($color-dark, .15), 0 .2rem .4rem rgba($color-dark, 7%);
+  box-shadow: 0 0.4rem 0.6rem rgba($color-dark, 0.15), 0 0.2rem 0.4rem rgba($color-dark, 7%);
 }
 
 @mixin shadow-box-standard {
-  box-shadow: inset 0 0 1px 1px rgb(255, 255, 255, 90%),
-  0 2rem 2.8rem 0 rgb(0, 0, 0, 5%);
+  box-shadow: inset 0 0 1px 1px rgb(255, 255, 255, 90%), 0 2rem 2.8rem 0 rgb(0, 0, 0, 40%);
+  backdrop-filter: saturate(200%) blur(3rem);
 }
 
 @mixin font($s: 1.6rem, $w: 400, $c: $font-color-dark, $up: false) {
   font-size: $s;
   font-weight: $w;
   color: $c;
-  @if $up == true {text-transform: uppercase;}
+  @if $up == true {
+    text-transform: uppercase;
+  }
 }
 
-@mixin absolute ($t: false, $b: false, $l: false, $r: false) {
+@mixin absolute($t: false, $b: false, $l: false, $r: false) {
   position: absolute;
-  @if ($t) {top: $t;}
-  @if ($b) {bottom: $b;}
-  @if ($l) {left: $l;}
-  @if ($r) {right: $r;}
+  @if ($t) {
+    top: $t;
+  }
+  @if ($b) {
+    bottom: $b;
+  }
+  @if ($l) {
+    left: $l;
+  }
+  @if ($r) {
+    right: $r;
+  }
 }
+
+
+
+
+
+

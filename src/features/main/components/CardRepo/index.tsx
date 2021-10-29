@@ -26,29 +26,37 @@ interface PropsType {
 const CardRepo: React.FC<PropsType> = (props) => {
 
 
-//<--------------------DATA AND STATES----------------->
+  //<--------------------DATA AND STATES----------------->
   const repo = props.repo
- 
-  
-//<--------------------JSX COMPONENT------------------->
+
+
+  //<--------------------JSX COMPONENT------------------->
   return (
-    <div className={styles.repo}>
-      <div className="repo__header">
-        <div className="repo__header-title"><NavLink to={`/card/${repo.owner.login}/${repo.name}`} >{repo.name}</NavLink></div>
-        <div className="repo__header-stars">
-          <i className='bx bxs-star'></i>
-          <div className="repo__header-star-count">{repo.stargazers_count}</div>
+    <div className={styles.card_repo}>
+      <div className={styles.wrapper}>
+        <div className="repo__header">
+          <div className="repo__header-title"><NavLink to={`/card/${repo.owner.login}/${repo.name}`} >{repo.name}</NavLink></div>
+          <div className="repo__header-stars">
+            <i className='bx bxs-star'></i>
+            <div className="repo__header-star-count">{repo.stargazers_count}</div>
+          </div>
         </div>
-      </div>
-      <div>aaa</div>
-      <div className="repo__body">
-        
-        <div className="repo__body-update">Последний коммит: {repo.updated_at}</div>
-        {/* <a className="repo__body-url" href={repo.html_url}>
+        <div>aaa</div>
+        <div className="repo__body">
+
+          <div className="repo__body-update">Последний коммит: {repo.updated_at}</div>
+          {/* <a className="repo__body-url" href={repo.html_url}>
           <div>Репозиторий</div>
         </a> */}
+        </div>
+
       </div>
-      <div className={styles.effect}></div>
+
+      <div className={styles.background}>
+          <div className={styles.bg_effect_1}></div>
+          <div className={styles.bg_effect_2}></div>
+      </div>
+      <div className={styles.effect} />
     </div>
   );
 };
