@@ -3,11 +3,13 @@ import { configureStore, combineReducers } from "@reduxjs/toolkit"
 import { reposFetch } from "../reducers/actions/reposApi"
 import reposSlice from "../reducers/reposSlice"
 import searchSlice from "../reducers/searchSlice"
+import authSlice from '../reducers/authSlice'
 
 
 const rootReducer = combineReducers({
   repos: reposSlice,
   search: searchSlice,
+  auth: authSlice,
   [reposFetch.reducerPath]: reposFetch.reducer
 })
 

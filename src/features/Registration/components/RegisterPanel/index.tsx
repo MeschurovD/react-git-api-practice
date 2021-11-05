@@ -2,9 +2,14 @@ import React, { useEffect, useState } from 'react';
 import isValidate, { StatusValidation } from '../../../../utils/isValidate';
 import styleHelper from './styleHelper';
 //@ts-ignore
+import { useHistory } from 'react-router-dom'
+//@ts-ignore
 import styles from './panel.module.scss'
 //@ts-ignore
 import stylesReg from '../../registration.module.scss'
+import { getLoginAction, getRegistrationAction } from '../../../../action/authAction';
+import { useTypeDispatch, useTypeSelector } from '../../../../hooks/redux';
+
 
 interface PropsType {
   reg: boolean
@@ -14,6 +19,9 @@ interface PropsType {
 //<--------------------COMPONENT----------------------->
 const RegisterPanel: React.FC<PropsType> = ({ reg, checkFirstDownload }) => {
 
+  const dispatch = useTypeDispatch()
+  const {push} = useHistory()
+  const isAuth = useTypeSelector(state => state.auth.isAuth)
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -22,6 +30,7 @@ const RegisterPanel: React.FC<PropsType> = ({ reg, checkFirstDownload }) => {
   const sign = reg ? 'Sing In' : 'Sing Up'
 
 
+  if (isAuth) push('/main')
   // useEffect(() => {
   //   if (invalidInput) setInvalidInput(StatusValidation.TRUE)
   // }, [invalidInput])
@@ -70,6 +79,9 @@ const RegisterPanel: React.FC<PropsType> = ({ reg, checkFirstDownload }) => {
 
     if (validate.status === StatusValidation.TRUE) {
       setInvalidInput(StatusValidation.TRUE)
+      reg 
+      ? getLoginAction(email, password, dispatch)
+      : getRegistrationAction(email, password, dispatch)
     }
     else {
       setInvalidInput(validate.status)
@@ -77,6 +89,8 @@ const RegisterPanel: React.FC<PropsType> = ({ reg, checkFirstDownload }) => {
         setInvalidInput(StatusValidation.TRUE)
       }, 1000)
     }
+
+    
 
 
   }
@@ -92,6 +106,7 @@ const RegisterPanel: React.FC<PropsType> = ({ reg, checkFirstDownload }) => {
             {/*---EMAIL---*/}
             <div className={styles.panel__card_body_title}>Email</div>
             <input
+              type='email'
               className={inputStyleEmail}
               placeholder='Email'
               value={email}

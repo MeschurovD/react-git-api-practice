@@ -10,12 +10,14 @@ import Repository from './features/Repository';
 import Registration from './features/Registration';
 //@ts-ignore
 import './app.scss'
+import { useTypeSelector } from './hooks/redux';
 
 
 //<--------------------COMPONENT----------------------->
 const App: React.FC = () => {
 
-  const isReg = true
+  const isAuth = useTypeSelector(state => state.auth.isAuth)
+  console.log(isAuth)
 
   
 //<--------------------JSX COMPONENT------------------->
@@ -23,7 +25,7 @@ const App: React.FC = () => {
     <BrowserRouter>
         <Switch>
           <Route exact path='/main' >
-            {isReg ? <Main /> : <Redirect to='/register' />}
+            {isAuth ? <Main /> : <Redirect to='/register' />}
           </Route>
           <Route path='/register' component={Registration} />
           <Route path='/card/:username/:reponame' component={Repository} />

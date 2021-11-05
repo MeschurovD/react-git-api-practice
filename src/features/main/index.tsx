@@ -13,6 +13,7 @@ import MainHeader from '../MainHeader';
 import Navbar from './components/Navbar';
 import Background from '../Background';
 import Fetching from './components/Fetching';
+import IsAuth from '../../components/IsAuth/IsAuth';
 
 
 //<--------------------COMPONENT----------------------->
@@ -46,38 +47,39 @@ const Main: React.FC = () => {
     window.scrollTo(0, 0)
   }
 
-  console.log(styles)
   //<--------------------JSX COMPONENT------------------->
   return (
-    <main className={styles.main_wrapper}>
-      <Background />
-      {/* <Navbar /> */}
+    <IsAuth>
+      <main className={styles.main_wrapper}>
+        <Background />
+        {/* <Navbar /> */}
 
-      <div className={styles.container}>
-        <MainHeader />
-        <div className={styles.main_body}>
-          {
-            isFetching
-              ?
-              <Fetching />
-              :
-              data.items.map((repo: any) => {
-                return <CardRepo repo={repo} key={repo.id + repo.node_id} />
-              })
-          }
+        <div className={styles.container}>
+          <MainHeader />
+          <div className={styles.main_body}>
+            {
+              isFetching
+                ?
+                <Fetching />
+                :
+                data.items.map((repo: any) => {
+                  return <CardRepo repo={repo} key={repo.id + repo.node_id} />
+                })
+            }
 
+          </div>
+          <div>
+            {!isFetching &&
+              <Pagination
+                currentPage={currentPage}
+                totalCount={totalCount}
+                perPage={perPage}
+                changeCurrentPage={changeCurrentPage}
+              />}
+          </div>
         </div>
-        <div>
-          {!isFetching &&
-            <Pagination
-              currentPage={currentPage}
-              totalCount={totalCount}
-              perPage={perPage}
-              changeCurrentPage={changeCurrentPage}
-            />}
-        </div>
-      </div>
-    </main>
+      </main>
+    </IsAuth>
   );
 
 };

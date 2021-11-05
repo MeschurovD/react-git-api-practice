@@ -2,6 +2,10 @@ const path = require('path')
 const miniCss = require('mini-css-extract-plugin')
 const HTMLPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const webpack = require('webpack')
+const dotenv = require('dotenv').config({
+  path: path.join(__dirname, '.env')
+})
 
 const resourcesLoader = {
   loader: 'sass-resources-loader',
@@ -102,6 +106,9 @@ module.exports = {
     ]
   },
   plugins: [
+    new webpack.DefinePlugin({
+      "process.env": dotenv.parsed
+    }),
     new miniCss({
       filename: 'style.css'
     }),
