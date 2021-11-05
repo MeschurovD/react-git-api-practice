@@ -1,34 +1,14 @@
 .fetching {
-  // &_item {
-  //   position: relative;
-  //   @include box-standart;
-  //   height: 15rem;
-  //   margin-bottom: 2rem;
-  //   overflow: hidden;
-  //   display: flex;
-  //   justify-content: center;
-  //   align-items: center;
-
-  //   &::before {
-  //     content: "";
-  //     position: absolute;
-  //     top: 0;
-  //     left: 0;
-  //     width: 2rem;
-  //     height: 100%;
-  //     background-color: rgba($color-white, .5);
-  //     transform: skewX(-30deg) translateX(-6rem);
-  //     animation: fetching-anim 2s infinite;
-  //     animation-delay: 1s;
-  //   }
-  // }
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+ 
 
   @for $i from 0 through 9 {
     &_item_#{$i} {
       position: relative;
       @include box-standart;
       height: 15rem;
-      margin-bottom: 2rem;
       overflow: hidden;
       display: flex;
       justify-content: center;

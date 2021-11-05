@@ -1,7 +1,7 @@
 /////////////////////////////////////
 // CONTAINER
 .container {
-  width: 1200px;
+  width: clamp(40rem, 90%, 120rem);
   margin: 4rem auto 0;
   position: relative;
 }
