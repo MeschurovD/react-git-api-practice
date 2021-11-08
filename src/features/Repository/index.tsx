@@ -9,7 +9,7 @@ import { useTypeDispatch, useTypeSelector } from '../../hooks/redux';
 import { useGetCurrentRepoQuery } from '../../reducers/actions/reposApi';
 import { ReposType } from '../../types/types';
 import Background from '../Background';
-import MainHeader from '../MainHeader';
+import MainHeader from '../MainHeader/MainHeader';
 //@ts-ignore
 import styles from './repository.module.scss'
 import CardHeader from './components/CardHeader';

@@ -9,7 +9,7 @@ import { setCurrentPage } from '../../reducers/reposSlice';
 import { useGetReposQuery } from '../../reducers/actions/reposApi';
 //@ts-ignore
 import styles from './main.module.scss'
-import MainHeader from '../MainHeader';
+import MainHeader from '../MainHeader/MainHeader';
 import Navbar from './components/Navbar';
 import Background from '../Background';
 import Fetching from './components/Fetching';
@@ -36,8 +36,6 @@ const Main: React.FC = () => {
 
 
   //<--------------------SUBSIDIARY FUNCTION------------->
-
-
   /**
    * Изменение страницы с репозиториями
    * @param {*} page - номер страницы
