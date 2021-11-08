@@ -1,6 +1,6 @@
 
 //<--------------------IMPORT-------------------------->
-import React from 'react';
+import React, { useLayoutEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 // @ts-ignore
@@ -10,15 +10,25 @@ import Repository from './features/Repository';
 import Registration from './features/Registration';
 //@ts-ignore
 import './app.scss'
-import { useTypeSelector } from './hooks/redux';
+import { useTypeDispatch, useTypeSelector } from './hooks/redux';
+import { setUser } from './reducers/authSlice';
 
 
 //<--------------------COMPONENT----------------------->
 const App: React.FC = () => {
 
+  const dispatch = useTypeDispatch()
+
   const isAuth = useTypeSelector(state => state.auth.isAuth)
   console.log(isAuth)
 
+  useLayoutEffect(() => {
+    const user = sessionStorage.getItem('user')
+    if (user) {
+      const { email, token, id } = JSON.parse(user)
+      dispatch(setUser({email, token, id}))
+    }
+  })
   
 //<--------------------JSX COMPONENT------------------->
   return (

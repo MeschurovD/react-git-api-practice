@@ -23,6 +23,8 @@ export const getLoginAction: GetAuthType = async (email, password, dispatch) => 
     const { user } = await signInWithEmailAndPassword(auth, email, password)
     console.log(user)
     //@ts-ignore
+    sessionStorage.setItem('user', JSON.stringify({email: user.email, token: user.accessToken, id: user.uid}))
+    //@ts-ignore
     dispatch(setUser({email: user.email, token: user.accessToken, id: user.uid}))
   } catch (error) {
     console.log(error)
@@ -33,6 +35,8 @@ export const getRegistrationAction: GetAuthType = async (email, password, dispat
   try {
     const { user } = await createUserWithEmailAndPassword(auth, email, password)
     console.log(user)
+    //@ts-ignore
+    sessionStorage.setItem('user', JSON.stringify({email: user.email, token: user.accessToken, id: user.uid}))
     //@ts-ignore
     dispatch(setUser({email: user.email, token: user.accessToken, id: user.uid}))
   } catch (error) {

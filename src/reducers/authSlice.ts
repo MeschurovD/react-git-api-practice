@@ -21,6 +21,7 @@ const authSlice = createSlice({
       state.isAuth = true
     },
     removeUser(state) {
+      sessionStorage.removeItem('user')
       state.email = null
       state.token = null
       state.id = null
