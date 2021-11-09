@@ -5,4 +5,5 @@ export interface AuthStateType {
   token: number | null
   id: number | null
   isAuth: boolean
+  error: string
 }

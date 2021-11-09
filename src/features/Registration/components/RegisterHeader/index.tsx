@@ -1,6 +1,8 @@
 
 //<--------------------IMPORT-------------------------->
 import React, { useState } from 'react';
+import { useTypeDispatch, useTypeSelector } from '../../../../hooks/redux';
+import { handlingError } from '../../../../reducers/authSlice';
 //@ts-ignore
 import styles from './register-header.module.scss'
 
@@ -17,16 +19,25 @@ const RegisterHeader: React.FC<PropsType> = (props) => {
   const [signIn, setSignIn] = useState(styles.disable)
   const [signOn, setSignUp] = useState(`${styles.registerHeader__singActive} ${styles.btn_color_1}`)
 
+  const errorAuth = useTypeSelector(state => state.auth.error)
+  const dispatch = useTypeDispatch()
+
   const onClickSignUp = () => {
+    if (errorAuth) {
+      console.log('123 ' + errorAuth)
+      dispatch(handlingError(null))
+    }
     props.setCheckFirstDownload(true)
-    console.log('click')
     setReg(false)
     setSignIn(`${styles.registerHeader__singActive} ${styles.btn_color_2}`)
     setSignUp(styles.disable)
   }
 
   const onClickSignIn = () => {
-    console.log('click')
+    if (errorAuth) {
+      console.log('123 ' + errorAuth)
+      dispatch(handlingError(null))
+    }
     setReg(true)
     setSignIn(styles.disable)
     setSignUp(`${styles.registerHeader__singActive} ${styles.btn_color_1}`)

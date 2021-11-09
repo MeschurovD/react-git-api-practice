@@ -9,6 +9,7 @@ import styles from './panel.module.scss'
 import stylesReg from '../../registration.module.scss'
 import { getLoginAction, getRegistrationAction } from '../../../../action/authAction';
 import { useTypeDispatch, useTypeSelector } from '../../../../hooks/redux';
+import { handlingError } from '../../../../reducers/authSlice';
 
 
 interface PropsType {
@@ -20,8 +21,10 @@ interface PropsType {
 const RegisterPanel: React.FC<PropsType> = ({ reg, checkFirstDownload }) => {
 
   const dispatch = useTypeDispatch()
-  const {push} = useHistory()
+  const { push } = useHistory()
   const isAuth = useTypeSelector(state => state.auth.isAuth)
+  const errorAuth = useTypeSelector(state => state.auth.error)
+  console.log(errorAuth)
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -60,7 +63,7 @@ const RegisterPanel: React.FC<PropsType> = ({ reg, checkFirstDownload }) => {
   // console.log(inputStyleEmail)
   // console.log(inputStylePassword)
   // console.log(sign)
-  
+
 
   //<--------------------HANDLERS------------------------>
   const onChangeEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -75,13 +78,14 @@ const RegisterPanel: React.FC<PropsType> = ({ reg, checkFirstDownload }) => {
 
   const onClickSignButton = () => {
 
+   
     const validate = isValidate(email, password)
 
     if (validate.status === StatusValidation.TRUE) {
       setInvalidInput(StatusValidation.TRUE)
-      reg 
-      ? getLoginAction(email, password, dispatch)
-      : getRegistrationAction(email, password, dispatch)
+      reg
+        ? getLoginAction(email, password, dispatch)
+        : getRegistrationAction(email, password, dispatch)
     }
     else {
       setInvalidInput(validate.status)
@@ -90,7 +94,7 @@ const RegisterPanel: React.FC<PropsType> = ({ reg, checkFirstDownload }) => {
       }, 1000)
     }
 
-    
+
 
 
   }
@@ -103,6 +107,7 @@ const RegisterPanel: React.FC<PropsType> = ({ reg, checkFirstDownload }) => {
           <div className={headerStyle} >Github info - {headerTitle}</div>
 
           <div className={styles.panel__card_body}>
+            <div>{errorAuth}</div>
             {/*---EMAIL---*/}
             <div className={styles.panel__card_body_title}>Email</div>
             <input

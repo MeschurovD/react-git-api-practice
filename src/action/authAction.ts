@@ -2,7 +2,7 @@
 import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { initializeApp } from 'firebase/app'
 import { firebaseConfig } from "../firebase";
-import { setUser } from '../reducers/authSlice';
+import { handlingError, setUser } from '../reducers/authSlice';
 
 const app = initializeApp(firebaseConfig)
 
@@ -27,7 +27,8 @@ export const getLoginAction: GetAuthType = async (email, password, dispatch) => 
     //@ts-ignore
     dispatch(setUser({email: user.email, token: user.accessToken, id: user.uid}))
   } catch (error) {
-    console.log(error)
+    console.log(error.code)
+    dispatch(handlingError(error.code))
   }
 }
 
@@ -40,6 +41,7 @@ export const getRegistrationAction: GetAuthType = async (email, password, dispat
     //@ts-ignore
     dispatch(setUser({email: user.email, token: user.accessToken, id: user.uid}))
   } catch (error) {
-    console.log(error)
+    console.log(error.code)
+    dispatch(handlingError(error.code))
   }
 }
