@@ -42,7 +42,7 @@
     .right {
       display: flex;
       justify-content: start;
-      flex: 0 1 40%;
+      flex: 0 1 max(40%, 40rem);
 
       margin-left: 1rem;
 

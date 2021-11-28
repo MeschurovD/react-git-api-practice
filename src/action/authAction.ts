@@ -21,7 +21,6 @@ const auth = getAuth()
 export const getLoginAction: GetAuthType = async (email, password, dispatch) => {
   try {
     const { user } = await signInWithEmailAndPassword(auth, email, password)
-    console.log(user)
     //@ts-ignore
     sessionStorage.setItem('user', JSON.stringify({email: user.email, token: user.accessToken, id: user.uid}))
     //@ts-ignore
@@ -35,7 +34,6 @@ export const getLoginAction: GetAuthType = async (email, password, dispatch) => 
 export const getRegistrationAction: GetAuthType = async (email, password, dispatch) => {
   try {
     const { user } = await createUserWithEmailAndPassword(auth, email, password)
-    console.log(user)
     //@ts-ignore
     sessionStorage.setItem('user', JSON.stringify({email: user.email, token: user.accessToken, id: user.uid}))
     //@ts-ignore

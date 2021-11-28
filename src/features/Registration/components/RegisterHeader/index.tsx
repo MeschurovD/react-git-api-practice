@@ -24,7 +24,6 @@ const RegisterHeader: React.FC<PropsType> = (props) => {
 
   const onClickSignUp = () => {
     if (errorAuth) {
-      console.log('123 ' + errorAuth)
       dispatch(handlingError(null))
     }
     props.setCheckFirstDownload(true)
@@ -35,7 +34,6 @@ const RegisterHeader: React.FC<PropsType> = (props) => {
 
   const onClickSignIn = () => {
     if (errorAuth) {
-      console.log('123 ' + errorAuth)
       dispatch(handlingError(null))
     }
     setReg(true)
@@ -43,7 +41,6 @@ const RegisterHeader: React.FC<PropsType> = (props) => {
     setSignUp(`${styles.registerHeader__singActive} ${styles.btn_color_1}`)
   }
 
-  console.log(styles)
 
 //<--------------------JSX COMPONENT------------------->
   return (

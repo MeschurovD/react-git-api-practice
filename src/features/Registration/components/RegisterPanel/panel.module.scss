@@ -38,6 +38,19 @@
       text-transform: uppercase;
       transition: all 0.2s;
     }
+
+    .test_acc {
+      background-color: inherit;
+      border: none;
+      cursor: pointer;
+      margin-top: 2rem;
+      display: inline-block;
+      padding-bottom: .5rem;
+
+      &:hover {
+        border-bottom: 1px solid blue;
+      }
+    }
   }
 }
 

@@ -6,7 +6,6 @@ import { useTypeSelector } from '../../hooks/redux';
 const IsAuth: React.FC = ({ children }) => {
 
   const isAuth = useTypeSelector(state => state.auth.isAuth)
-  console.log(isAuth)
 
   return isAuth ? (
     <>

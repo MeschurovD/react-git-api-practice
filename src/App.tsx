@@ -20,7 +20,6 @@ const App: React.FC = () => {
   const dispatch = useTypeDispatch()
 
   const isAuth = useTypeSelector(state => state.auth.isAuth)
-  console.log(isAuth)
 
   useLayoutEffect(() => {
     const user = sessionStorage.getItem('user')

@@ -24,7 +24,6 @@ const RegisterPanel: React.FC<PropsType> = ({ reg, checkFirstDownload }) => {
   const { push } = useHistory()
   const isAuth = useTypeSelector(state => state.auth.isAuth)
   const errorAuth = useTypeSelector(state => state.auth.error)
-  console.log(errorAuth)
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -52,17 +51,12 @@ const RegisterPanel: React.FC<PropsType> = ({ reg, checkFirstDownload }) => {
 
   const {
     btnStyle,
+    testAccBtnStyle,
     headerStyle,
     inputStyleEmail,
     inputStylePassword,
   } = styleHelper(styles, reg, checkFirstDownload, invalidInput)
 
-  // console.log(btnStyle)
-  // console.log(headerStyle)
-  // console.log(headerTitle)
-  // console.log(inputStyleEmail)
-  // console.log(inputStylePassword)
-  // console.log(sign)
 
 
   //<--------------------HANDLERS------------------------>
@@ -77,7 +71,6 @@ const RegisterPanel: React.FC<PropsType> = ({ reg, checkFirstDownload }) => {
 
 
   const onClickSignButton = () => {
-
    
     const validate = isValidate(email, password)
 
@@ -93,10 +86,11 @@ const RegisterPanel: React.FC<PropsType> = ({ reg, checkFirstDownload }) => {
         setInvalidInput(StatusValidation.TRUE)
       }, 1000)
     }
+  }
 
-
-
-
+  const onClickTestAccount = () => {
+    setEmail('test1@gmail.com')
+    setPassword('test12345')
   }
 
   //<--------------------JSX COMPONENT------------------->
@@ -136,6 +130,10 @@ const RegisterPanel: React.FC<PropsType> = ({ reg, checkFirstDownload }) => {
             }
             {/*---SIGN BUTTON---*/}
             <button className={btnStyle} onClick={onClickSignButton} >{sign}</button>
+            {
+              reg && <button className={testAccBtnStyle} onClick={onClickTestAccount}>Тестовый аккаунт</button>
+            }
+            
           </div>
 
         </div>
