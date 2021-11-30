@@ -7,10 +7,12 @@
   padding: 0.8rem 2.4rem;
   background-color: rgba($color-white, 0.8);
   backdrop-filter: saturate(200%) blur(30px);
+  font-size: 3rem;
 
   @include shadow-box;
 
   z-index: 10;
+
 
   //
   &__wrapper {

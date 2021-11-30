@@ -25,6 +25,12 @@ body {
   font-family: "Open Sans", sans-serif;
   font-size: 1.6rem;
   overflow-x: hidden;
+  a {
+    text-decoration: none; /* Убираем подчёркивание */
+   }
 
+   a:hover {
+    text-decoration: none;
+   }
  
 }

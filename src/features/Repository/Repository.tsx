@@ -8,11 +8,12 @@ import { useParams } from 'react-router';
 import { useTypeDispatch, useTypeSelector } from '../../hooks/redux';
 import { useGetCurrentRepoQuery } from '../../reducers/actions/reposApi';
 import { ReposType } from '../../types/types';
-import Background from '../Background';
+import Background from '../../components/Background/Background';
 import MainHeader from '../MainHeader/MainHeader';
 //@ts-ignore
 import styles from './repository.module.scss'
-import CardHeader from './components/CardHeader';
+import CardHeader from './components/CardHeader/CardHeader';
+import BranchesPanel from './components/BranchesPanel/BranchesPanel';
 
 
 //<--------------------TYPE---------------------------->
@@ -46,15 +47,9 @@ const Repository: React.FC<PropsType> = (props) => {
       <Background />
       <div className={styles.container}>
         <MainHeader goBack={props.history.goBack} />
-        {
-          isFetching
-            ?
-            <div className='fetching'></div>
-            :
-            <div>
-              <CardHeader isFetching={isFetching} />
-            </div>
-        }
+
+        <CardHeader isFetching={isFetching} />
+        <BranchesPanel username={username} reponame={reponame} />
       </div>
 
     </div>

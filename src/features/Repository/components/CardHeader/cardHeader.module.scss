@@ -1,29 +1,61 @@
-
 .header {
   margin-top: 2.5rem;
   padding: 1.6rem;
 
   .headerImg {
-    background-image: url('../../../../../img/fon-1-min.png');
+    //background-image: url('../../../../../img/fon-1-min.png');
+    position: relative;
     background-size: cover;
     min-height: 30rem;
     width: 100%;
     border-radius: 1rem;
+    background-image: linear-gradient(310deg, $gradient-1-start, $gradient-1-finish);
+    overflow: hidden;
 
+   
   }
 
   .headerMenu {
-    @include box(.8);
+    @include box(0.8);
 
-    margin-top: -4rem;
+    margin-top: -15rem;
     margin-right: 2.4rem;
     margin-left: 2.4rem;
+    height: 20rem;
+
+    display: flex;
+    align-items: center;
 
     &_fetching {
-      
     }
-    .test {
-      height: 8rem;
+
+    .avatar {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      padding: 2rem;
+      
+      img {
+        border-radius: 50%;
+        height: 10rem;
+
+      }
+    }
+
+    .name {
+      font-size: 3rem;
+      display: flex;
+      //align-items: center;
+      margin: 0 3rem;
+      border-bottom: 2px solid blue;
+    }
+
+    .repo_url {
+      margin-left: auto;
+      margin-right: 2rem;
+      .repo_url_button {
+       @include repo-url-button;
+      }
     }
   }
 }

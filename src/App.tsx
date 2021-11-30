@@ -1,14 +1,10 @@
 
 //<--------------------IMPORT-------------------------->
 import React, { useLayoutEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
-// @ts-ignore
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
-import Main from './features/Main';
-import Repository from './features/Repository';
-import Registration from './features/Registration';
-//@ts-ignore
+import Main from './features/Main/Main';
+import Repository from './features/Repository/Repository';
+import Registration from './features/Registration/Registration';
 import './app.scss'
 import { useTypeDispatch, useTypeSelector } from './hooks/redux';
 import { setUser } from './reducers/authSlice';

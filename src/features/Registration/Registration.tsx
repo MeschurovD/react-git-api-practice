@@ -1,11 +1,9 @@
 
 //<--------------------IMPORT-------------------------->
 import React, { useEffect, useState } from 'react';
-import RegisterHeader from './components/RegisterHeader';
-import RegisterPanel from './components/RegisterPanel';
-//@ts-ignore
+import RegisterHeader from './components/RegisterHeader/RegisterHeader';
+import RegisterPanel from './components/RegisterPanel/RegisterPanel';
 import styles from './registration.module.scss'
-//import style from './registration.module.scss'
 
 
 //<--------------------COMPONENT----------------------->

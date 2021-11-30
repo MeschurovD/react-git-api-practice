@@ -15,7 +15,7 @@ interface PropsType {
 const RegisterHeader: React.FC<PropsType> = (props) => {
 
 
-  const {reg, setReg} = props
+  const { reg, setReg } = props
   const [signIn, setSignIn] = useState(styles.disable)
   const [signOn, setSignUp] = useState(`${styles.registerHeader__singActive} ${styles.btn_color_1}`)
 
@@ -42,10 +42,12 @@ const RegisterHeader: React.FC<PropsType> = (props) => {
   }
 
 
-//<--------------------JSX COMPONENT------------------->
+  //<--------------------JSX COMPONENT------------------->
   return (
     <div className={styles.registerHeader}>
-      <div className={styles.registerHeader__logo}>Logo</div>
+      <div className={styles.registerHeader__logo}>
+        <i className='bx bxl-github' ></i>
+      </div>
       <div className={styles.registerHeader__wrapper}>
         <button className={signIn} onClick={onClickSignIn} >Sing in</button>
         <button className={signOn} onClick={onClickSignUp} >Sing up</button>

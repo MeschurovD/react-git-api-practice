@@ -1,25 +1,22 @@
 
 //<--------------------IMPORT-------------------------->
 import React, { useEffect, useState } from 'react';
-import CardRepo from './components/CardRepo';
+import CardRepo from './components/CardRepo/CardRepo';
 import Pagination from '../../components/Pagination';
-//@ts-ignore
 import { useTypeDispatch, useTypeSelector } from '../../hooks/redux';
 import { setCurrentPage } from '../../reducers/reposSlice';
 import { useGetReposQuery } from '../../reducers/actions/reposApi';
-//@ts-ignore
 import styles from './main.module.scss'
 import MainHeader from '../MainHeader/MainHeader';
-import Navbar from './components/Navbar';
-import Background from '../Background';
-import Fetching from './components/Fetching';
+import Background from '../../components/Background/Background';
+import Fetching from './components/Fetching/Fetching';
 import IsAuth from '../../components/IsAuth/IsAuth';
 
 
-//<--------------------COMPONENT----------------------->
 /**
  * Основная страница со списком репозиториев
  */
+//<--------------------COMPONENT----------------------->
 const Main: React.FC = () => {
 
 

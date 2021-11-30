@@ -18,26 +18,36 @@ interface GetAuthType {
 
 const auth = getAuth()
 
+//Вход
 export const getLoginAction: GetAuthType = async (email, password, dispatch) => {
   try {
     const { user } = await signInWithEmailAndPassword(auth, email, password)
-    //@ts-ignore
-    sessionStorage.setItem('user', JSON.stringify({email: user.email, token: user.accessToken, id: user.uid}))
-    //@ts-ignore
-    dispatch(setUser({email: user.email, token: user.accessToken, id: user.uid}))
+    const userData = {
+      email: user.email,
+      //@ts-ignore
+      token: user.accessToken,
+      id: user.uid
+    }
+    sessionStorage.setItem('user', JSON.stringify(userData))
+    dispatch(setUser(userData))
   } catch (error) {
     console.log(error.code)
     dispatch(handlingError(error.code))
   }
 }
 
+//Регистрация
 export const getRegistrationAction: GetAuthType = async (email, password, dispatch) => {
   try {
     const { user } = await createUserWithEmailAndPassword(auth, email, password)
-    //@ts-ignore
-    sessionStorage.setItem('user', JSON.stringify({email: user.email, token: user.accessToken, id: user.uid}))
-    //@ts-ignore
-    dispatch(setUser({email: user.email, token: user.accessToken, id: user.uid}))
+    const userData = {
+      email: user.email,
+      //@ts-ignore
+      token: user.accessToken,
+      id: user.uid
+    }
+    sessionStorage.setItem('user', JSON.stringify(userData))
+    dispatch(setUser(userData))
   } catch (error) {
     console.log(error.code)
     dispatch(handlingError(error.code))

@@ -20,10 +20,17 @@ export const reposFetch = createApi({
     }),
     getCurrentRepo: builder.query({
       query: (args) => `repos/${args.username}/${args.reponame}`
+    }),
+    getBranch: builder.query({
+      query: (args) => `repos/${args.username}/${args.reponame}/branches`
     })
   })
 
 
 })
 
-export const { useGetReposQuery, useGetCurrentRepoQuery } = reposFetch
+export const { 
+  useGetReposQuery, 
+  useGetCurrentRepoQuery,
+  useGetBranchQuery 
+} = reposFetch

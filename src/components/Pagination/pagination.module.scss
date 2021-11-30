@@ -1,16 +1,30 @@
-.pages {
+@mixin button-pagination {
+  border-radius: 1rem;
+  margin-right: 10px;
+  cursor: pointer;
 
-  margin-top: 6rem;
-  
-  .page, .currentPage {
-    border: 1px solid black;
-    border-radius: 100%;
-    padding: 5px 10px;
-    margin-right: 10px;
-    cursor: pointer;
+  &:hover {
+    @include btn-anim;
+  }
+}
+
+.pages {
+  display: flex;
+  justify-content: center;
+  margin: 6rem 0;
+
+  .arrow {
+    font-size: 3rem;
+    padding: 0.5rem;
+    @include button-pagination;
+  }
+
+  .page,
+  .currentPage {
+    padding: 1rem;
+    @include button-pagination;
   }
   .currentPage {
-    border: 2px solid black;
+    box-shadow: 0 0.5rem 2rem rgba($color-dark, 0.2);
   }
-  
 }

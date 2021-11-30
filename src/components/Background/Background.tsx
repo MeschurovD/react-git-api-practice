@@ -1,20 +1,21 @@
 
 //<--------------------IMPORT-------------------------->
 import React from 'react';
-//@ts-ignore
-import styles from './navbar.module.scss'
+import styles from './background.module.scss'
 
 
 //<--------------------COMPONENT----------------------->
-const Navbar: React.FC = () => {
+const Background = () => {
 
-
+  
 //<--------------------JSX COMPONENT------------------->
   return (
-    <div className={styles.navbar}>
-      
+    <div className={styles.background}>
+      <div className={styles.test_1}></div>
+      <div className={styles.test_2}></div>
     </div>
   );
 };
 
-export default Navbar;
+export default Background;
+

@@ -70,7 +70,7 @@ const Search: React.FC<PropsType> = ({goBack}) => {
         onKeyDown={onKeySearchRepo}
         className={styles.search_input}
       />
-      <button className={btnSearchStyle} onClick={onClickSearchRepo}>Search</button>
+      <button className={btnSearchStyle} onClick={onClickSearchRepo}>Поиск</button>
     </div>
   );
 };

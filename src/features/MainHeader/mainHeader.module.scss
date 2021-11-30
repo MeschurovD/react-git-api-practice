@@ -7,7 +7,7 @@
   border-radius: 1rem;
 
   z-index: 1000;
-  transition: width .4s;
+  transition: width 0.4s;
 
   .wrapper {
     display: flex;
@@ -27,44 +27,40 @@
         display: flex;
         margin-left: 1rem;
 
+        .main_button {
+          @include icon-button;
+        }
+
         .button_go_back {
           padding: 1rem;
           border-radius: 1rem;
           font-size: 3rem;
-          transition: all .2s;
+          transition: all 0.2s;
           @include btn-anim;
         }
       }
     }
 
-    
-
     .right {
       display: flex;
       justify-content: start;
-      flex: 0 1 max(40%, 40rem);
+      flex: 0 1 max(40%, 70rem);
 
       margin-left: 1rem;
 
       .login_button {
-        padding: 1rem;
-        border-radius: 1rem;
-        transition: all .2s;
-        @include btn-anim;
-        font-size: 3rem;
+        @include icon-button;
       }
     }
   }
- 
 }
 
 .scroll {
-  @include box-standart(.5);
+  @include box-standart(0.5);
   @include shadow-box-standard;
-  transition: width .5s;
+  transition: width 0.5s;
   width: 95%;
   margin: 0 auto;
 }
-
 
 

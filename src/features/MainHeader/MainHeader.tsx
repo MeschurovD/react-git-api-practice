@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useTypeDispatch } from '../../hooks/redux';
 import { removeUser } from '../../reducers/authSlice';
+import { setCurrentPage } from '../../reducers/reposSlice';
+import { setCheck, setSearch } from '../../reducers/searchSlice';
 import Search from './components/Search/Search';
 //@ts-ignore
 import styles from './mainHeader.module.scss'
@@ -33,6 +35,12 @@ const MainSearch: React.FC<PropsType> = (props) => {
 
   }
 
+  const onClickMain = () => {
+    dispatch(setCurrentPage({ page: 1 }))
+    dispatch(setSearch(''))
+    dispatch(setCheck(false))
+  }
+
   const onClickGoBack = () => {
     props.goBack()
   }
@@ -41,7 +49,7 @@ const MainSearch: React.FC<PropsType> = (props) => {
     dispatch(removeUser())
   }
 
- 
+
   //<--------------------USE EFFECT---------------------->
   useEffect(() => {
     window.addEventListener('scroll', changeScroll)
@@ -61,7 +69,12 @@ const MainSearch: React.FC<PropsType> = (props) => {
                 <i className='bx bx-arrow-back'></i>
               </div>
             }
-            meny
+            {
+              !checkGoBack &&
+              <div className={styles.main_button} onClick={onClickMain} >
+                <i className='bx bxl-github' ></i>
+              </div>
+            }
           </nav>
 
 
