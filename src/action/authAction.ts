@@ -1,4 +1,3 @@
-//import { useTypeDispatch } from './../hooks/redux';
 import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { initializeApp } from 'firebase/app'
 import { firebaseConfig } from "../firebase";
@@ -6,7 +5,6 @@ import { handlingError, setUser } from '../reducers/authSlice';
 
 const app = initializeApp(firebaseConfig)
 
-//const dispatch = useTypeDispatch()
 
 interface GetAuthType {
   (

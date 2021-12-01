@@ -41,7 +41,6 @@ const authSlice = createSlice({
       if (!action.payload) {
         state.error = null
       }
-      //state.error = action.payload
     }
   }
 })

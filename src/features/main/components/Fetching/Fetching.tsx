@@ -1,7 +1,6 @@
 
 //<--------------------IMPORT-------------------------->
 import React from 'react';
-//@ts-ignore
 import styles from './fetching.module.scss'
 
 

@@ -6,6 +6,7 @@ const webpack = require('webpack')
 const dotenv = require('dotenv').config({
   path: path.join(__dirname, '.env')
 })
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const resourcesLoader = {
   loader: 'sass-resources-loader',
@@ -29,7 +30,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].[hash].js',
-    publicPath: '/'
+    publicPath: '/react-git-api-practice/'
   },
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
@@ -106,6 +107,7 @@ module.exports = {
     ]
   },
   plugins: [
+    //new BundleAnalyzerPlugin(),
     new webpack.DefinePlugin({
       "process.env": dotenv.parsed
     }),

@@ -22,7 +22,6 @@
         left: 0;
         width: 12rem;
         height: 100%;
-        //background-color: rgba($color-white, .5);
         background-image: linear-gradient(90deg, rgba($color-white, .1), rgba($color-white, .9));
         transform: skewX(-30deg) translateX(-20rem);
         animation: fetching-anim 2s infinite;

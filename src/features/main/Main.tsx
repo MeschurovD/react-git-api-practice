@@ -1,6 +1,6 @@
 
 //<--------------------IMPORT-------------------------->
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import CardRepo from './components/CardRepo/CardRepo';
 import Pagination from '../../components/Pagination';
 import { useTypeDispatch, useTypeSelector } from '../../hooks/redux';
@@ -20,11 +20,11 @@ import IsAuth from '../../components/IsAuth/IsAuth';
 const Main: React.FC = () => {
 
 
-  //<--------------------SUBSIDIARY---------------------->
+//<--------------------SUBSIDIARY---------------------->
   const dispatch = useTypeDispatch()
 
 
-  //<--------------------DATA AND STATES----------------->
+//<--------------------DATA AND STATES----------------->
   const { currentPage, totalCount } = useTypeSelector(state => state.repos)
   const { check, searchValue } = useTypeSelector(state => state.search)
   const perPage: number = 10
@@ -32,7 +32,7 @@ const Main: React.FC = () => {
   const { data, isFetching } = useGetReposQuery({ searchQuery: searchValue, currentPage, perPage }, { skip: check })
 
 
-  //<--------------------SUBSIDIARY FUNCTION------------->
+//<--------------------SUBSIDIARY FUNCTION------------->
   /**
    * Изменение страницы с репозиториями
    * @param {*} page - номер страницы
@@ -42,13 +42,11 @@ const Main: React.FC = () => {
     window.scrollTo(0, 0)
   }
 
-  //<--------------------JSX COMPONENT------------------->
+//<--------------------JSX COMPONENT------------------->
   return (
     <IsAuth>
       <main className={styles.main_wrapper}>
         <Background />
-        {/* <Navbar /> */}
-
         <div className={styles.container}>
           <MainHeader />
           <div className={styles.main_body}>

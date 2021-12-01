@@ -3,13 +3,10 @@ import isValidate, { StatusValidation } from '../../../../utils/isValidate';
 import styleHelper from './styleHelper';
 //@ts-ignore
 import { useHistory } from 'react-router-dom'
-//@ts-ignore
 import styles from './panel.module.scss'
-//@ts-ignore
 import stylesReg from '../../registration.module.scss'
 import { getLoginAction, getRegistrationAction } from '../../../../action/authAction';
 import { useTypeDispatch, useTypeSelector } from '../../../../hooks/redux';
-import { handlingError } from '../../../../reducers/authSlice';
 
 
 interface PropsType {
@@ -31,23 +28,7 @@ const RegisterPanel: React.FC<PropsType> = ({ reg, checkFirstDownload }) => {
   const headerTitle = reg ? 'login' : 'registration'
   const sign = reg ? 'Sing In' : 'Sing Up'
 
-
   if (isAuth) push('/main')
-  // useEffect(() => {
-  //   if (invalidInput) setInvalidInput(StatusValidation.TRUE)
-  // }, [invalidInput])
-
-  //<-----------------------STYLE------------------------>
-  // const btnStyle = checkFirstDownload
-  //   ? reg ? 'btn-sign-in btn-color-2 btn-anim-sign btn-sign-up-anim' : 'btn-sign-in btn-color-1 btn-anim-reg btn-sign-down-anim'
-  //   : 'btn-sign-in btn-color-2 btn-anim-sign'
-  // const headerStyle = reg ? 'panel__card-header text-color-2' : 'panel__card-header text-color-1'
-  // const headerTitle = reg ? 'login' : 'registration'
-  // const inputStyle = reg 
-  //   ? 'input-r left' + (invalidInput ? '' : ' input-invalid-anim')
-  //   : 'input-r right' + (invalidInput ? '' : ' input-invalid-anim')
-
-  // const sign = reg ? 'Sing in' : 'Sing up'
 
   const {
     btnStyle,
@@ -58,7 +39,6 @@ const RegisterPanel: React.FC<PropsType> = ({ reg, checkFirstDownload }) => {
   } = styleHelper(styles, reg, checkFirstDownload, invalidInput)
 
 
-
   //<--------------------HANDLERS------------------------>
   const onChangeEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value)
@@ -67,8 +47,6 @@ const RegisterPanel: React.FC<PropsType> = ({ reg, checkFirstDownload }) => {
   const onChangePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(event.target.value)
   }
-
-
 
   const onClickSignButton = () => {
    

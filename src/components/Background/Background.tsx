@@ -11,8 +11,12 @@ const Background = () => {
 //<--------------------JSX COMPONENT------------------->
   return (
     <div className={styles.background}>
-      <div className={styles.test_1}></div>
-      <div className={styles.test_2}></div>
+      <div className={styles.bg_1} />
+      <div className={styles.bg_2} />
+      <div className={styles.bg_3} />
+      <div className={styles.bg_4} />
+      <div className={styles.bg_5} />
+      <div className={styles.bg_6} />
     </div>
   );
 };

@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import { useTypeDispatch } from '../../../../hooks/redux';
 import { setCurrentPage } from '../../../../reducers/reposSlice';
 import { setCheck, setSearch } from '../../../../reducers/searchSlice';
-//@ts-ignore
 import styles from './search.module.scss'
 
 

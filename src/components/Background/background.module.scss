@@ -8,7 +8,7 @@
   overflow: hidden;
   background-image: linear-gradient(45deg, rgba($gradient-2-start, .5) 11%, rgba($gradient-2-finish, .5) 70%);
 
-  .test_1 {
+  .bg_1 {
     position: absolute;
     transform: translateY(70vh) translateX(-40vw) rotate(30deg);
     background-image: linear-gradient(
@@ -20,12 +20,12 @@
       rgba($gradient-2-finish, .01) 90%
     );
     mix-blend-mode: multiply;
-    height: 100vh;
+    height: 90vh;
     width: 50vw;
     animation: anim-bg-1 7s infinite;
   }
 
-  .test_2 {
+  .bg_2 {
     position: absolute;
     transform: translateY(90vh) translateX(-10vw) rotate(10deg);
     background-image: linear-gradient(
@@ -42,6 +42,82 @@
     width: 50vw;
     transition: all 5s;
     animation: anim-bg-2 10s infinite;
+  }
+
+  .bg_3 {
+    position: absolute;
+    transform: translateY(90vh) translateX(-10vw) rotate(-20deg);
+    background-image: linear-gradient(
+      90deg,
+      rgba($gradient-2-start, 0.1) 0%,
+      40%,
+      rgba($gradient-1-finish, .7),
+      rgba($gradient-1-finish, .7) 60%,
+      rgba($gradient-1-start, .1),
+      rgba($gradient-2-start, .01) 
+    );
+    mix-blend-mode: multiply;
+    height: 100vh;
+    width: 50vw;
+    transition: all 5s;
+    animation: anim-bg-3 12s infinite;
+  }
+
+  .bg_4 {
+    position: absolute;
+    transform: translateY(0vh) translateX(80vw) rotate(140deg);
+    background-image: linear-gradient(
+      90deg,
+      rgba($gradient-2-start, 0.1) 0%,
+      40%,
+      rgba($gradient-2-finish, .7),
+      rgba($gradient-2-finish, .7) 60%,
+      rgba($gradient-2-start, .1),
+      rgba($gradient-2-start, .01) 
+    );
+    mix-blend-mode: multiply;
+    height: 100vh;
+    width: 100vw;
+    transition: all 5s;
+    animation: anim-bg-4 13s infinite;
+  }
+
+  .bg_5 {
+    position: absolute;
+    transform: translateY(-70vh) translateX(70vw) rotate(70deg);
+    background-image: linear-gradient(
+      90deg,
+      rgba($gradient-2-start, 0.1) 0%,
+      40%,
+      rgba($gradient-2-finish, .7),
+      rgba($gradient-2-finish, .7) 60%,
+      rgba($gradient-2-start, .1),
+      rgba($gradient-2-start, .01) 
+    );
+    mix-blend-mode: multiply;
+    height: 100vh;
+    width: 70vw;
+    transition: all 5s;
+    animation: anim-bg-5 8s infinite;
+  }
+
+  .bg_6 {
+    position: absolute;
+    transform: translateY(10vh) translateX(60vw) rotate(-20deg);
+    background-image: linear-gradient(
+      80deg,
+      rgba($gradient-2-finish, 0) 0%,
+      50%,
+      rgba($gradient-1-start, .7),
+      rgba($gradient-1-finish, .7) 60%,
+      rgba($gradient-1-start, .1),
+      rgba($gradient-2-start, .01) 
+    );
+    mix-blend-mode: multiply;
+    height: 100vh;
+    width: 100vw;
+    transition: all 5s;
+    animation: anim-bg-6 6s infinite;
   }
 }
 
@@ -73,3 +149,58 @@
   }
 }
 
+@keyframes anim-bg-3 {
+  0% {
+    transform: translateY(90vh) translateX(-10vw) rotate(-20deg);
+  }
+
+  50% {
+    transform: translateY(80vh) translateX(-30vw) rotate(-30deg);
+  }
+
+  100% {
+    transform: translateY(90vh) translateX(-10vw) rotate(-20deg);
+  }
+}
+
+@keyframes anim-bg-4 {
+  0% {
+    transform: translateY(0vh) translateX(80vw) rotate(140deg);
+  }
+
+  50% {
+    transform: translateY(-5vh) translateX(70vw) rotate(130deg);
+  }
+
+  100% {
+    transform: translateY(0vh) translateX(80vw) rotate(140deg);
+  }
+}
+
+@keyframes anim-bg-5 {
+  0% {
+    transform: translateY(-70vh) translateX(70vw) rotate(70deg);
+  }
+
+  50% {
+    transform: translateY(-70vh) translateX(65vw) rotate(50deg);
+  }
+
+  100% {
+    transform: translateY(-70vh) translateX(70vw) rotate(70deg);
+  }
+}
+
+@keyframes anim-bg-6 {
+  0% {
+    transform: translateY(10vh) translateX(60vw) rotate(-20deg);
+  }
+
+  50% {
+    transform: translateY(15vh) translateX(65vw) rotate(-35deg);
+  }
+
+  100% {
+    transform: translateY(10vh) translateX(60vw) rotate(-20deg);
+  }
+}

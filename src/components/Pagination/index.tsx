@@ -24,6 +24,8 @@ const Pagination: React.FC<PropsType> = ({currentPage, totalCount, perPage, chan
   const leftStyle = `${styles.arrow} bx bxs-left-arrow-alt`
   const rightStyle = `${styles.arrow} bx bxs-right-arrow-alt`
 
+
+//<--------------------HANDLERS------------------------>
   const onClickLeft = () => {
     if (currentPage !== 1) {
       changeCurrentPage(currentPage - 1)

@@ -6,18 +6,16 @@ import { useParams } from 'react-router-dom'
 import { useTypeSelector } from '../../../../hooks/redux';
 
 
-interface PropsType {
-  isFetching: boolean
-}
+
 
 //<--------------------COMPONENT----------------------->
-const CardHeader: React.FC<PropsType> = ({ isFetching }) => {
+const CardHeader: React.FC = () => {
 
   const { username, reponame } = useParams()
   const repo = useTypeSelector(state => state.repos.currentRepo)
   console.log(repo)
 
-  const headerMenuStyle = isFetching ? styles.headerMenu_fetching : styles.headerMenu
+  const headerMenuStyle = styles.headerMenu
 
 
   //<--------------------JSX COMPONENT------------------->

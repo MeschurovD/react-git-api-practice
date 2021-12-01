@@ -4,7 +4,6 @@ import { removeUser } from '../../reducers/authSlice';
 import { setCurrentPage } from '../../reducers/reposSlice';
 import { setCheck, setSearch } from '../../reducers/searchSlice';
 import Search from './components/Search/Search';
-//@ts-ignore
 import styles from './mainHeader.module.scss'
 
 
@@ -28,13 +27,15 @@ const MainSearch: React.FC<PropsType> = (props) => {
   const buttonGoBackStyle = `${styles.button_go_back}`
 
 
-  //<--------------------SUBSIDIARY FUNCTION------------->
+//<--------------------SUBSIDIARY FUNCTION------------->
   const changeScroll = () => {
     if (window.scrollY >= 40) { setIsScroll(true) }
     else { setIsScroll(false) }
 
   }
 
+
+//<--------------------HANDLERS------------------------>
   const onClickMain = () => {
     dispatch(setCurrentPage({ page: 1 }))
     dispatch(setSearch(''))
@@ -50,14 +51,14 @@ const MainSearch: React.FC<PropsType> = (props) => {
   }
 
 
-  //<--------------------USE EFFECT---------------------->
+//<--------------------USE EFFECT---------------------->
   useEffect(() => {
     window.addEventListener('scroll', changeScroll)
     return window.addEventListener('scroll', changeScroll)
   }, [])
 
 
-  //<--------------------JSX COMPONENT------------------->
+//<--------------------JSX COMPONENT------------------->
   return (
     <header className={headerStyle}>
       <div className={styles.wrapper}>
@@ -76,8 +77,6 @@ const MainSearch: React.FC<PropsType> = (props) => {
               </div>
             }
           </nav>
-
-
         </div>
         <div className={styles.right}>
           <Search goBack={props.goBack} />

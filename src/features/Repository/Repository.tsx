@@ -14,6 +14,7 @@ import MainHeader from '../MainHeader/MainHeader';
 import styles from './repository.module.scss'
 import CardHeader from './components/CardHeader/CardHeader';
 import BranchesPanel from './components/BranchesPanel/BranchesPanel';
+import InfoPanel from './components/InfoPanel/InfoPanel';
 
 
 //<--------------------TYPE---------------------------->
@@ -37,8 +38,6 @@ const Repository: React.FC<PropsType> = (props) => {
   const { username, reponame } = useParams()
   //const [repo, setRepo] = useState({})
   //const { isFetching } = useTypeSelector(state => state.repos)
-  const { data, isFetching } = useGetCurrentRepoQuery({ username, reponame })
-
 
 
   //<--------------------JSX COMPONENT------------------->
@@ -48,8 +47,11 @@ const Repository: React.FC<PropsType> = (props) => {
       <div className={styles.container}>
         <MainHeader goBack={props.history.goBack} />
 
-        <CardHeader isFetching={isFetching} />
-        <BranchesPanel username={username} reponame={reponame} />
+        <CardHeader />
+        <div className={styles.body}>
+          <InfoPanel />
+          <BranchesPanel username={username} reponame={reponame} />
+        </div>
       </div>
 
     </div>

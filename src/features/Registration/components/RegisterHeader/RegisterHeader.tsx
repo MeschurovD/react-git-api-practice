@@ -3,11 +3,9 @@
 import React, { useState } from 'react';
 import { useTypeDispatch, useTypeSelector } from '../../../../hooks/redux';
 import { handlingError } from '../../../../reducers/authSlice';
-//@ts-ignore
 import styles from './register-header.module.scss'
 
 interface PropsType {
-  reg: boolean
   setReg: (reg: boolean) => void
   setCheckFirstDownload: Function
 }
@@ -15,13 +13,16 @@ interface PropsType {
 const RegisterHeader: React.FC<PropsType> = (props) => {
 
 
-  const { reg, setReg } = props
+//<--------------------DATA AND STATES----------------->
+  const { setReg } = props
   const [signIn, setSignIn] = useState(styles.disable)
   const [signOn, setSignUp] = useState(`${styles.registerHeader__singActive} ${styles.btn_color_1}`)
 
   const errorAuth = useTypeSelector(state => state.auth.error)
   const dispatch = useTypeDispatch()
 
+
+//<--------------------HANDLERS------------------------>
   const onClickSignUp = () => {
     if (errorAuth) {
       dispatch(handlingError(null))
