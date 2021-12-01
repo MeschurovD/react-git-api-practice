@@ -1,9 +1,11 @@
-//@use './style/base.scss' as *;
-//@use "./style/components/components" as *;
 
 * {
   margin: 0;
   padding: 0;
+
+  ::-webkit-scrollbar {
+    width: 0;
+  }
 }
 
 *,
@@ -21,4 +23,12 @@ body {
   font-family: "Open Sans", sans-serif;
   font-size: 1.6rem;
   overflow-x: hidden;
+  a {
+    text-decoration: none; /* Убираем подчёркивание */
+   }
+
+   a:hover {
+    text-decoration: none;
+   }
+ 
 }

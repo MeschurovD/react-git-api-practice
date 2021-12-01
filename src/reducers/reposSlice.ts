@@ -6,7 +6,8 @@ const initialState: ReposReducerStateType = {
   isFetching: true,
   currentPage: 1,
   totalCount: 0,
-  error: null
+  error: null,
+  currentRepo: null
 }
 
 const reposSlice = createSlice({
@@ -15,10 +16,13 @@ const reposSlice = createSlice({
   reducers: {
     setCurrentPage: (state, action: ActionCurrentPageType) => {
       state.currentPage = action.payload.page
+    },
+    setCurrentRepo: (state, action) => {
+      state.currentRepo = action.payload.currentRepo
     }
   },
 
 })
 
 export default reposSlice.reducer
-export const {setCurrentPage} = reposSlice.actions
+export const {setCurrentPage, setCurrentRepo} = reposSlice.actions

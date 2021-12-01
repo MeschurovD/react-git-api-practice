@@ -1,8 +1,7 @@
 
 //<--------------------IMPORT-------------------------->
-import React from 'react';
-import usePages from '../../hooks/usePages';
-//@ts-ignore
+import React from 'react'
+import usePages from '../../hooks/usePages'
 import styles from './pagination.module.scss'
 
 
@@ -22,10 +21,27 @@ const Pagination: React.FC<PropsType> = ({currentPage, totalCount, perPage, chan
 //<--------------------DATA AND STATES----------------->
   const pages = usePages(currentPage, totalCount, perPage)  
 
+  const leftStyle = `${styles.arrow} bx bxs-left-arrow-alt`
+  const rightStyle = `${styles.arrow} bx bxs-right-arrow-alt`
+
+
+//<--------------------HANDLERS------------------------>
+  const onClickLeft = () => {
+    if (currentPage !== 1) {
+      changeCurrentPage(currentPage - 1)
+    }
+  }
+
+  const onClickRight = () => {
+    if (currentPage !== totalCount) {
+      changeCurrentPage(currentPage + 1)
+    }
+  }
 
 //<--------------------JSX COMPONENT------------------->
   return (
     <div className={styles.pages}>
+      <i className={leftStyle} onClick={onClickLeft}></i>
         {
           pages.map((page, index) =>
             <span
@@ -36,6 +52,7 @@ const Pagination: React.FC<PropsType> = ({currentPage, totalCount, perPage, chan
               {page}
             </span>)
         }
+         <i className={rightStyle} onClick={onClickRight}></i>
       </div>
   );
 };

@@ -2,6 +2,11 @@ const path = require('path')
 const miniCss = require('mini-css-extract-plugin')
 const HTMLPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const webpack = require('webpack')
+const dotenv = require('dotenv').config({
+  path: path.join(__dirname, '.env')
+})
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const resourcesLoader = {
   loader: 'sass-resources-loader',
@@ -12,6 +17,7 @@ const resourcesLoader = {
       path.resolve(__dirname, 'src/style/components/_animation.scss'),
       path.resolve(__dirname, 'src/style/components/_components.scss'),
       path.resolve(__dirname, 'src/style/components/_utils.scss'),
+      path.resolve(__dirname, 'src/style/components/_background_effect.scss')
     ]
   }
 }
@@ -24,7 +30,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].[hash].js',
-    publicPath: '/'
+    publicPath: '/react-git-api-practice/'
   },
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
@@ -64,51 +70,6 @@ module.exports = {
           resourcesLoader
         ]
       },
-      //   {
-      //   test: /\.(s*)css$/,
-      //   use: [
-      //     miniCss.loader,
-      //     {
-      //       loader: 'css-loader',
-      //       options: {
-      //         modules: {
-      //           modules: false,
-      //           sourceMap: true,
-      //           minimize: true
-      //           // mode: "local",
-      //           // auto: true,
-      //           // exportGlobals: true,
-      //           // localIdentName: "[name]__[local]--[hash:base64:5]",
-      //           // localIdentContext: path.resolve(__dirname, "src"),
-      //           // localIdentHashSalt: "my-custom-hash",
-      //           // namedExport: false,
-      //           // exportLocalsConvention: "asIs",
-      //           // exportOnlyLocals: false,
-      //         },
-      //       }
-      //     },
-      //     'sass-loader',
-      //     {
-      //       loader: 'sass-resources-loader',
-      //       options: {
-      //         hoistUseStatements: true,
-      //         resources: [
-      //           path.resolve(__dirname, 'src/style/components/_variables.scss'),
-      //           path.resolve(__dirname, 'src/style/components/_animation.scss'),
-      //           path.resolve(__dirname, 'src/style/components/_components.scss'),
-      //           path.resolve(__dirname, 'src/style/components/_utils.scss'),
-      //           // path.resolve(__filename, 'src/style/components/_animation.scss'),
-      //           // './src/style/components/_animation.scss',
-      //           // './src/style/components/_components.scss',
-      //           // './src/style/components/_utils.scss',
-      //           // './src/style/components/_variables.scss',
-      //           // './src/style/components'
-      //         ]
-      //       }
-      //     }
-
-      //   ]
-      // },
       {
         test: /\.js$/,
         exclude: /node_module/,
@@ -146,6 +107,10 @@ module.exports = {
     ]
   },
   plugins: [
+    //new BundleAnalyzerPlugin(),
+    new webpack.DefinePlugin({
+      "process.env": dotenv.parsed
+    }),
     new miniCss({
       filename: 'style.css'
     }),

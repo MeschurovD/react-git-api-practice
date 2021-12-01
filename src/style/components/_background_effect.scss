@@ -1,0 +1,41 @@
+
+%bg-effect {
+  position: absolute;
+  mix-blend-mode: multiply;
+  height: 100%;
+  width: 100%;
+}
+
+@mixin bg-effect-1 {
+  @extend %bg-effect;
+  transform: rotate(33deg);
+  right: -23%;
+  top: 76%;
+  background-image: linear-gradient(
+    45deg,
+    rgba($gradient-1-start, 0) 0%,
+    40%,
+    rgba($gradient-1-finish, 0.3),
+    rgba($gradient-1-finish, 0.7) 60%,
+    rgba($gradient-2-start, 0.1),
+    rgba($gradient-2-start, 0.01)
+  );
+  
+}
+
+@mixin bg-effect-2 {
+  @extend %bg-effect;
+  transform: rotate(9deg);
+  right: -23%;
+  top: 33%;
+  background-image: linear-gradient(
+    82deg,
+    rgba($gradient-2-start, 0) 0%,
+    40%,
+    rgba($gradient-2-finish, 0.3),
+    rgba($gradient-2-finish, 0.7) 60%,
+    rgba($gradient-2-start, 0.1),
+    rgba($gradient-2-start, 0.01)
+  );
+  
+}

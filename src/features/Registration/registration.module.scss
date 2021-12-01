@@ -1,29 +1,37 @@
-//@use '../../style/base.scss' as *;
 .register {
   transition: all 1s;
 }
 
 .wrapper {
-  //При входе
-  .row {
-    display: flex;
-    flex-wrap: wrap;
-    transition: all 1s;
-
-    &Anim {
-      animation: registrAnimationToRight;
-      animation-duration: 1s;
-    }
-  }
-  //При регистрации
+  .row,
   .rowRev {
     display: flex;
     flex-wrap: wrap;
-    flex-direction: row-reverse;
+    transition: all 1s;
+  }
 
-    &Anim {
-      animation: registrAnimationToLeft;
-      animation-duration: 1s;
+  @media (min-width: 1200px) {
+    //При входе
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      transition: all 1s;
+
+      &Anim {
+        animation: registrAnimationToRight;
+        animation-duration: 1s;
+      }
+    }
+    //При регистрации
+    .rowRev {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row-reverse;
+
+      &Anim {
+        animation: registrAnimationToLeft;
+        animation-duration: 1s;
+      }
     }
   }
 
@@ -42,7 +50,7 @@
   width: 100%;
   min-height: 75%;
 
-  %fon {
+  @mixin fon {
     border-radius: 2rem;
     position: absolute;
     background-size: cover;
@@ -54,41 +62,51 @@
     transform: skewX(-10deg);
   }
 
-  &_fon_1 {
-    @extend %fon;
-    right: 0;
-    margin-right: -30rem;
-    background-image: url("../../../img/fon-1-min.png");
+  @media (min-width: 889px) {
+    &_fon_1 {
+      @include fon;
+      right: 0;
+      margin-right: -30rem;
+      background-image: url("../../../img/fon-1-m.jpg");
+    }
   }
 
-  &_fon_2 {
-    @extend %fon;
-    left: -100%;
-    background-image: url("../../../img/fon-2.jpg");
+  @media (min-width: 1200px) {
+    &_fon_1 {
+      @include fon;
+      right: 0;
+      margin-right: -30rem;
+      background-image: url("../../../img/fon-1-m.jpg");
+    }
+
+    &_fon_2 {
+      @include fon;
+      left: -100%;
+      background-image: url("../../../img/fon-2.jpg");
+    }
   }
 }
 
+@media (min-width: 1200px) {
+  .to_right_close {
+    animation: toRightClose;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+  }
 
+  .to_right_open {
+    animation: toRightOpen;
+    animation-duration: 1s;
+  }
 
+  .to_left_open {
+    animation: toLeftOpen;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+  }
 
-.to_right_close {
-  animation: toRightClose;
-  animation-duration: 1s;
-  animation-fill-mode: forwards;
-}
-
-.to_right_open {
-  animation: toRightOpen;
-  animation-duration: 1s;
-}
-
-.to_left_open {
-  animation: toLeftOpen;
-  animation-duration: 1s;
-  animation-fill-mode: forwards;
-}
-
-.to_left_close {
-  animation: toLeftClose;
-  animation-duration: 1s;
+  .to_left_close {
+    animation: toLeftClose;
+    animation-duration: 1s;
+  }
 }

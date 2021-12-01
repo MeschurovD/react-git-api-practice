@@ -1,0 +1,64 @@
+.header {
+  position: sticky !important;
+  top: 1rem;
+  width: 100%;
+  margin: 0 auto;
+  background-color: inherit;
+  border-radius: 1rem;
+
+  z-index: 1000;
+  transition: width 0.4s;
+
+  .wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    flex-wrap: nowrap;
+
+    padding: 0.5rem;
+
+    .left {
+      display: flex;
+      justify-content: start;
+      flex: 0 1 40%;
+
+      .nav {
+        display: flex;
+        margin-left: 1rem;
+
+        .main_button {
+          @include icon-button;
+        }
+
+        .button_go_back {
+          padding: 1rem;
+          border-radius: 1rem;
+          font-size: 3rem;
+          transition: all 0.2s;
+          @include btn-anim;
+        }
+      }
+    }
+
+    .right {
+      display: flex;
+      justify-content: start;
+      flex: 0 1 max(40%, 70rem);
+
+      margin-left: 1rem;
+
+      .login_button {
+        @include icon-button;
+      }
+    }
+  }
+}
+
+.scroll {
+  @include box-standart(0.5);
+  @include shadow-box-standard;
+  transition: width 0.5s;
+  width: 95%;
+  margin: 0 auto;
+}

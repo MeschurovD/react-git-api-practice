@@ -1,0 +1,44 @@
+
+%search {
+  float: left;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  padding: 1rem;
+  overflow: hidden;
+  border-radius: 1rem;
+  margin-right: 1rem;
+  transition: all 1s;
+
+  .search_input {
+    display: inline-block;
+    padding: 0.8rem 1.6rem;
+    border: none;
+    width: 100%;
+    outline: none;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .search_button {
+    transition: 0.2s;
+    @include btn-standart;
+    @include btn-anim;
+  }
+
+  .icon {
+    font-size: 3rem;
+  }
+}
+
+.search_base {
+  @extend %search;
+
+  display: flex;
+  flex: 2;
+
+  background-color: $color-white;
+
+}
